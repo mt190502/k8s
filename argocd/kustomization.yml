@@ -1,0 +1,15 @@
+resources:
+  - application.yml
+  - ingressroute.yml
+  - namespace.yml
+
+helmCharts:
+  - name: argo-cd
+    repo: https://argoproj.github.io/argo-helm
+    releaseName: argocd
+    version: 7.7.14
+    namespace: argocd
+    valuesInline:
+      configs:
+        params:
+          server.insecure: true

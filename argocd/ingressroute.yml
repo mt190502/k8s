@@ -1,0 +1,37 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: argocd-server
+  namespace: argocd
+  annotations:
+    cert-manager.io/cluster-issuer: mainissuer
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`argo.mtaha.dev`)
+      priority: 10
+      services:
+        - kind: Service
+          name: argocd-server
+          namespace: argocd
+          passHostHeader: true
+          port: 80
+          scheme: http
+    - kind: Rule
+      match: Host(`argo.mtaha.dev`) && Headers(`Content-Type`, `application/grpc`)
+      priority: 11
+      services:
+        - kind: Service
+          name: argocd-server
+          namespace: argocd
+          passHostHeader: true
+          port: 80
+          scheme: h2c
+  tls:
+    secretName: wildcard-mtaha.dev-tls
+
+    domains:
+      - main: argo.mtaha.dev
