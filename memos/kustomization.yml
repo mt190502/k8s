@@ -1,0 +1,17 @@
+resources:
+  - namespace.yml
+  - ingressroute.yml
+  - application.yml
+
+# helmCharts:
+#   - name: memos
+#     repo: https://helm.mtaha.dev
+#     releaseName: memos
+#     version: 2.0.1
+#     namespace: memos-k8s
+
+secretGenerator:
+  - name: memos-postgres
+    namespace: memos-k8s
+    envs:
+      - ./.db-secret.env

@@ -1,0 +1,19 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: memos
+  namespace: argocd
+spec:
+  destination:
+    namespace: memos-k8s
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: memos
+    repoURL: https://helm.mtaha.dev
+    targetRevision: '*'
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
