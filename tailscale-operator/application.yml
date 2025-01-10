@@ -1,0 +1,25 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tailscale-operator
+  namespace: argocd
+spec:
+  destination:
+    namespace: tailscale-k8s
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: tailscale-operator
+    helm:
+      parameters:
+      - name: operatorConfig.defaultTags[0]
+        value: tag:k8s-operator
+      - name: proxyConfig.defaultTags
+        value: tag:k8s-pods
+    repoURL: https://pkgs.tailscale.com/helmcharts
+    targetRevision: 1.*
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
