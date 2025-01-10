@@ -1,0 +1,24 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: gatus
+  namespace: gatus-k8s
+pec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`uptime.mtaha.dev`)
+      priority: 10
+      services:
+        - kind: Service
+          name: gatus
+          namespace: gatus-k8s
+          passHostHeader: true
+          port: 80
+          scheme: http
+  tls:
+    domains:
+      - main: uptime.mtaha.dev
+    secretName: wildcard-mtaha.dev-tls
