@@ -1,0 +1,17 @@
+resources:
+  - namespace.yml
+  - ingressroute.yml
+  - application.yml
+
+# helmCharts:
+#   - name: commafeed
+#     repo: https://helm.mtaha.dev
+#     releaseName: commafeed
+#     version: 2.0.1
+#     namespace: commafeed-k8s
+
+secretGenerator:
+  - name: commafeed-postgres
+    namespace: commafeed-k8s
+    envs:
+      - ./.db-secret.env
