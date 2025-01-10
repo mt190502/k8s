@@ -1,0 +1,53 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: paperless-ngx
+  namespace: argocd
+spec:
+  destination:
+    namespace: paperless-ngx-k8s
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: paperless-ngx
+    helm:
+      parameters:
+      - name: global.web.options.paperless_url
+        value: https://paperless.mtaha.dev
+      values: |-
+        global:
+          web:
+            environments:
+              - name: PAPERLESS_OCR_LANGUAGE
+                value: eng
+              - name: PAPERLESS_OCR_LANGUAGES
+                value: tur eng
+              - name: PAPERLESS_SECRET_KEY
+                value: my_strong_secret_key
+              - name: PAPERLESS_DBENGINE
+                value: postgresql
+              - name: PAPERLESS_ENABLE_NLTK
+                value: false
+              - name: PAPERLESS_OCR_CLEAN
+                value: none
+              - name: PAPERLESS_OCR_MODE
+                value: skip
+              - name: PAPERLESS_OCR_SKIP_ARCHIVE_FILE
+                value: always
+              - name: PAPERLESS_REDIS
+                value: redis://paperless-ngx-broker:6379
+              - name: PAPERLESS_TASK_WORKERS
+                value: 1
+              - name: PAPERLESS_THREADS_PER_WORKER
+                value: 1
+              - name: PAPERLESS_TRAIN_TASK_CRON
+                value: disable
+              - name: PAPERLESS_WEBSERVER_WORKERS
+                value: 1
+    repoURL: https://helm.mtaha.dev
+    targetRevision: '*'
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
