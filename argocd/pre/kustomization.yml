@@ -1,6 +1,4 @@
 resources:
-  - application.yml
-  - ingressroute.yml
   - namespace.yml
 
 helmCharts:
@@ -13,3 +11,5 @@ helmCharts:
       configs:
         params:
           server.insecure: true
+      global:
+        domain: argo.mtaha.dev
