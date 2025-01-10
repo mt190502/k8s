@@ -1,0 +1,4 @@
+resources:
+  - issuer.yml
+  - wildcard-certificate.yml
+  - application.yml

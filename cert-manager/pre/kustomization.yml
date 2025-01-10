@@ -1,0 +1,20 @@
+resources:
+  - namespace.yml
+  - configmap.yml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+helmCharts:
+  - name: cert-manager
+    repo: https://charts.jetstack.io
+    releaseName: cert-manager
+    version: 1.16.2
+    namespace: traefik
+    valuesInline:
+      installCRDs: true
+
+secretGenerator:
+  - name: cloudflare-api-token-secret
+    envs:
+      - ./.env

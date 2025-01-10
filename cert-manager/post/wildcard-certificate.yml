@@ -1,0 +1,14 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-mtaha.dev
+  namespace: traefik
+spec:
+  secretName: wildcard-mtaha.dev-tls
+  dnsNames:
+    - 'mtaha.dev'
+    - '*.mtaha.dev'
+  issuerRef:
+    name: mainissuer
+    kind: ClusterIssuer
