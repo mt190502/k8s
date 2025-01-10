@@ -1,0 +1,20 @@
+resources:
+  - argocd/pre/
+  - cert-manager/pre
+  - metallb/
+  - traefik/
+  - argocd/post/
+  - cert-manager/post/
+  - longhorn/
+  - codimd/
+  - commafeed/
+  # - filestash/
+  - gatus/
+  - grafana/
+  - memos/
+  # - minio/
+  - nextcloud/
+  - paperless-ngx/
+  - tailscale-operator/
+  - umami/
+  - vaultwarden/
