@@ -1,0 +1,23 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: umami
+  namespace: argocd
+spec:
+  destination:
+    namespace: umami-k8s
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: umami
+    helm:
+      parameters:
+        - name: global.web.options.app_secret
+          value: my_strong_secret_key
+    repoURL: https://helm.mtaha.dev
+    targetRevision: '*'
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
