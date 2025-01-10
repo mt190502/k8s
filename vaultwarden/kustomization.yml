@@ -1,0 +1,17 @@
+resources:
+  - namespace.yml
+  - ingressroute.yml
+  - application.yml
+
+# helmCharts:
+#   - name: vaultwarden
+#     repo: https://helm.mtaha.dev
+#     releaseName: vaultwarden
+#     version: 2.0.1
+#     namespace: vaultwarden-k8s
+
+secretGenerator:
+  - name: vaultwarden-postgres
+    namespace: vaultwarden-k8s
+    envs:
+      - ./.db-secret.env
