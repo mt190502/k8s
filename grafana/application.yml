@@ -1,0 +1,29 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: grafana
+  namespace: argocd
+spec:
+  destination:
+    namespace: grafana-k8s
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: grafana
+    helm:
+      parameters:
+        - name: persistence.enabled
+          value: 'true'
+        - name: persistence.size
+          value: 1Gi
+        - name: admin.passwordKey
+          value: admin-pass
+        - name: admin.existingSecret
+          value: grafana-secret
+    repoURL: https://grafana.github.io/helm-charts
+    targetRevision: 8.*
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
