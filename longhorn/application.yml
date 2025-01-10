@@ -1,0 +1,32 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: longhorn
+  namespace: argocd
+spec:
+  destination:
+    namespace: longhorn-system
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: longhorn
+    helm:
+      parameters:
+        - name: preUpgradeChecker.jobEnabled
+          value: 'false'
+      values: |-
+        global:
+          tolerations:
+          - key: "node-role.kubernetes.io/master"
+            operator: "Exists"
+            effect: "NoSchedule"
+          - key: "node.kubernetes.io/control-plane"
+            operator: "Exists"
+            effect: "NoSchedule"
+    repoURL: https://charts.longhorn.io/
+    targetRevision: 1.*
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
