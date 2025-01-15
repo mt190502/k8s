@@ -1,0 +1,26 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: adguard-home
+  namespace: argocd
+spec:
+  destination:
+    namespace: adguard-home-k8s
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: adguard-home
+    helm:
+      parameters:
+      - name: global.web.tls.secretName
+        value: wildcard-mtaha.dev-tls
+      - name: global.web.tls.serverName
+        value: dns.mtaha.dev
+      - name: global.web.podCIDR
+        value: 172.16.0.0/16
+    repoURL: https://helm.mtaha.dev
+    targetRevision: '*'
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true

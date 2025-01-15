@@ -1,0 +1,37 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: adguard-home-header
+  namespace: adguard-home-k8s
+spec:
+  headers:
+    customRequestHeaders:
+      Host: 'adguard-home-web.adguard-home-k8s.svc.cluster.local:443'
+      X-Real-IP: 'localhost'
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: adguard-home-web
+  namespace: adguard-home-k8s
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`dns.mtaha.dev`)
+      middlewares:
+        - name: adguard-home-header
+      priority: 10
+      services:
+        - kind: Service
+          name: adguard-home-web
+          namespace: adguard-home-k8s
+          passHostHeader: true
+          port: web-ssl
+          scheme: https
+  tls:
+    domains:
+      - main: dns.mtaha.dev
+    secretName: wildcard-mtaha.dev-tls
