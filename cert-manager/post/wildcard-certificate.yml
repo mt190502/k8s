@@ -6,6 +6,10 @@ metadata:
   namespace: traefik
 spec:
   secretName: wildcard-mtaha.dev-tls
+  secretTemplate:
+    annotations:
+      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "adguard-home-k8s"
   dnsNames:
     - 'mtaha.dev'
     - '*.mtaha.dev'
