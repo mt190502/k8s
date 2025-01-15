@@ -46,12 +46,14 @@ graph TD;
 
 ### Components
 
+- AdGuard Home - For DNS and ad blocking
 - ArgoCD - For GitOps, manages all the deployments (except itself and the CNI)
 - cert-manager - For managing certificates
 - CodiMD - For note taking (simple)
 - Commafeed - For RSS feeds
 - Gatus - For health checks
 - Grafana - For cluster monitoring
+- Kubernetes Reflector - For syncing secrets across namespaces
 - Longhorn - For storage provisioning
 - Memos - For note taking (advanced)
 - MetalLB - Load balancer, network policies

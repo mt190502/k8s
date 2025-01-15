@@ -5,12 +5,14 @@ resources:
   - traefik/
   - argocd/post/
   - cert-manager/post/
+  - adguard-home/
   - longhorn/
   - codimd/
   - commafeed/
   # - filestash/
   - gatus/
   - grafana/
+  - kubernetes-reflector/
   - memos/
   # - minio/
   - nextcloud/
