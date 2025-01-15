@@ -14,13 +14,13 @@ spec:
     chart: traefik
     helm:
       values: |
+        nodeSelector:
+          kubernetes.io/hostname: w1.srv.mtaha.dev
+
         deployment:
-          replicas: 3
+          replicas: 1
 
         ports:
-          web:
-            redirectTo: 
-              port: websecure
           websecure:
             hostPort: 443
 
@@ -29,11 +29,12 @@ spec:
           isDefaultClass: true
 
         additionalArguments:
-          - --providers.kubernetescrd.allowCrossNamespace=true
           - --entrypoints.name.http3
+          - --providers.kubernetescrd.allowCrossNamespace=true
+          - --providers.kubernetescrd.allowExternalNameServices=true
+          - --serverstransport.insecureskipverify=true
           #- --entryPoints.web.forwardedHeaders.insecure
           #- --log.level=DEBUG
-          #- --serverstransport.insecureskipverify=true
 
         tlsStore:
           default:
