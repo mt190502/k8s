@@ -21,7 +21,7 @@ spec:
           port: 80
           scheme: http
     - kind: Rule
-      match: Host(`argo.mtaha.dev`) && Headers(`Content-Type`, `application/grpc`)
+      match: Host(`argo.mtaha.dev`) && Header(`Content-Type`, `application/grpc`)
       priority: 11
       services:
         - kind: Service
