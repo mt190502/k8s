@@ -9,8 +9,18 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`umami.mtaha.dev`)
+      match: "HeaderRegexp(`Referer`, `^https?:\\/\\/(?:[a-zA-Z0-9\\-\\.]+\\.)?mtaha\\.dev`) && (Method(`POST`) || Method(`OPTIONS`)) && Host(`umami.mtaha.dev`) && PathPrefix(`/api`)"
       priority: 10
+      services:
+        - kind: Service
+          name: umami-web
+          namespace: umami-k8s
+          passHostHeader: true
+          port: 3000
+          scheme: http
+    - kind: Rule
+      match: "Host(`umami.mtaha.dev`) && PathPrefix(`/`) && Method(`GET`)"
+      priority: 11
       services:
         - kind: Service
           name: umami-web
