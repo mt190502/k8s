@@ -1,5 +1,35 @@
 ---
 apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: dav-redirect
+  namespace: nextcloud-k8s
+spec:
+  redirectRegex:
+    regex: "^/.well-known/(carddav|caldav)"
+    replacement: "/remote.php/dav/"
+    permanent: true
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: hsts-header
+  namespace: nextcloud-k8s
+spec:
+  headers:
+    stsSeconds: 15552000
+    stsIncludeSubdomains: true
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: nextcloud-req-buffer
+  namespace: nextcloud-k8s
+spec:
+  buffering:
+    maxRequestBodyBytes: 10737418240
+---
+apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: nextcloud
@@ -11,6 +41,10 @@ spec:
     - kind: Rule
       match: Host(`cloud.mtaha.dev`)
       priority: 10
+      middlewares:
+        - name: dav-redirect
+        - name: hsts-header
+        - name: nextcloud-req-buffer
       services:
         - kind: Service
           name: nextcloud
