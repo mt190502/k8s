@@ -1,4 +1,3 @@
----
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -15,6 +14,22 @@ spec:
       parameters:
       - name: global.web.options.paperless_url
         value: https://paperless.mtaha.dev
+      - name: global.web.appSecret.name
+        value: paperless-ngx-web
+      - name: global.web.appSecret.key
+        value: paperless_secret_key
+      - name: global.web.appSecret.autoCreate
+        value: "kustomize"
+      - name: global.postgres.secret.name
+        value: paperless-ngx-postgres
+      - name: global.postgres.secret.databaseKey
+        value: postgres_database
+      - name: global.postgres.secret.usernameKey
+        value: postgres_username
+      - name: global.postgres.secret.passwordKey
+        value: postgres_password
+      - name: global.postgres.secret.autoCreate
+        value: "kustomize"
       values: |-
         global:
           web:
@@ -23,8 +38,6 @@ spec:
                 value: eng
               - name: PAPERLESS_OCR_LANGUAGES
                 value: tur eng
-              - name: PAPERLESS_SECRET_KEY
-                value: my_strong_secret_key
               - name: PAPERLESS_DBENGINE
                 value: postgresql
               - name: PAPERLESS_ENABLE_NLTK

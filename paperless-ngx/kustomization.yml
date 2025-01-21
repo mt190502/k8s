@@ -3,49 +3,14 @@ resources:
   - ingressroute.yml
   - application.yml
 
-# helmCharts:
-#   - name: paperless-ngx
-#     repo: https://helm.mtaha.dev
-#     releaseName: paperless-ngx
-#     version: 2.0.1
-#     namespace: paperless-ngx-k8s
-#     valuesInline:
-#       global:
-#         web:
-#           options:
-#             paperless_url: https://paperless.mtaha.dev
-#           environments:
-#             - name: PAPERLESS_OCR_LANGUAGE
-#               value: eng
-#             - name: PAPERLESS_OCR_LANGUAGES
-#               value: tur eng
-#             - name: PAPERLESS_SECRET_KEY
-#               value: my_strong_secret_key
-#             - name: PAPERLESS_DBENGINE
-#               value: postgresql
-#             - name: PAPERLESS_ENABLE_NLTK
-#               value: false
-#             - name: PAPERLESS_OCR_CLEAN
-#               value: none
-#             - name: PAPERLESS_OCR_MODE
-#               value: skip
-#             - name: PAPERLESS_OCR_SKIP_ARCHIVE_FILE
-#               value: always
-#             - name: PAPERLESS_REDIS
-#               value: redis://paperless-ngx-broker:6379
-#             - name: PAPERLESS_TASK_WORKERS
-#               value: 1
-#             - name: PAPERLESS_THREADS_PER_WORKER
-#               value: 1
-#             - name: PAPERLESS_TRAIN_TASK_CRON
-#               value: disable
-#             - name: PAPERLESS_WEBSERVER_WORKERS
-#               value: 1
-#         postgres:
-#           options:
-#             password: my_strong_password
+generatorOptions:
+  disableNameSuffixHash: true
 
 secretGenerator:
+  - name: paperless-ngx-web
+    namespace: paperless-ngx-k8s
+    envs:
+      - ./.app-secret.env
   - name: paperless-ngx-postgres
     namespace: paperless-ngx-k8s
     envs:
