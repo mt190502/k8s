@@ -13,80 +13,160 @@ spec:
     chart: gatus
     helm:
       values: |
+        nodeSelector:
+          kubernetes.io/hostname: w1.srv.mtaha.dev
         config:
           ui:
             header: 'mtaha.dev - Health Status'
             title: 'Health Status | mtaha.dev'
           endpoints:
-            #- name: 'ArgoCD'
-            #  url: 'https://argo.mtaha.dev'
+            #- name: 'AdGuard Home'
+            #  url: 'https://dns.mtaha.dev'
+            #  group: 'External'
+            #  interval: 300s
+            #  conditions:
+            #    - '[STATUS] == any(200, 201, 202)'
+            - name: 'ArgoCD'
+              url: 'https://argo.mtaha.dev'
+              group: 'External'
+              interval: 300s
+              conditions:
+               - '[STATUS] == any(200, 201, 202)'
+            - name: 'ArgoCD'
+              url: 'http://argocd-server.argocd.svc.cluster.local'
+              group: 'Internal'
+              interval: 300s
+              conditions:
+              - '[STATUS] == any(200, 201, 202)'
+            #- name: 'Caddy Repo Server'
+            #  url: 'https://repo.mtaha.dev'
             #  group: 'internal'
             #  interval: 300s
             #  conditions:
             #    - '[STATUS] == any(200, 201, 202)'
-            - name: 'Nextcloud'
-              url: 'https://cloud.mtaha.dev'
-              group: 'internal'
-              interval: 300s
-              conditions:
-                - '[STATUS] == any(200, 201, 202)'
-            - name: 'Grafana'
-              url: 'https://dash.mtaha.dev'
-              group: 'internal'
-              interval: 300s
-              conditions:
-                - '[STATUS] == any(200, 201, 202)'
-            - name: 'Filestash'
-              url: 'https://files.mtaha.dev'
-              group: 'internal'
-              interval: 300s
-              conditions:
-                - '[STATUS] == any(200, 201, 202)'
             - name: 'CodiMD'
               url: 'https://md.mtaha.dev'
-              group: 'internal'
+              group: 'External'
               interval: 300s
               conditions:
-                - '[STATUS] == any(200, 201, 202)'
-            - name: 'Memos'
-              url: 'https://notes.mtaha.dev'
-              group: 'internal'
+              - '[STATUS] == any(200, 201, 202)'
+            - name: 'CodiMD'
+              url: 'http://codimd-web.codimd-k8s.svc.cluster.local:3000'
+              group: 'Internal'
               interval: 300s
               conditions:
-                - '[STATUS] == any(200, 201, 202)'
-            - name: 'Paperless-NGX'
-              url: 'https://paperless.mtaha.dev'
-              group: 'internal'
-              interval: 300s
-              conditions:
-                - '[STATUS] == any(200, 201, 202)'
+              - '[STATUS] == any(200, 201, 202)'
             - name: 'Commafeed'
               url: 'https://rss.mtaha.dev'
-              group: 'internal'
+              group: 'External'
               interval: 300s
               conditions:
-                - '[STATUS] == any(200, 201, 202)'
+              - '[STATUS] == any(200, 201, 202)'
+            - name: 'Commafeed'
+              url: 'http://commafeed-web.commafeed-k8s.svc.cluster.local'
+              group: 'Internal'
+              interval: 300s
+              conditions:
+              - '[STATUS] == any(200, 201, 202)'
+            - name: 'Filestash'
+              url: 'https://files.mtaha.dev'
+              group: 'External'
+              interval: 300s
+              conditions:
+              - '[STATUS] == any(200, 201, 202)'
+            - name: 'Filestash'
+              url: 'http://filestash-web.filestash-k8s.svc.cluster.local:8334'
+              group: 'Internal'
+              interval: 300s
+              conditions:
+              - '[STATUS] == any(200, 201, 202)'
+            - name: 'Grafana'
+              url: 'https://dash.mtaha.dev'
+              group: 'External'
+              interval: 300s
+              conditions:
+              - '[STATUS] == any(200, 201, 202)'
+            - name: 'Grafana'
+              url: 'http://grafana.grafana-k8s.svc.cluster.local'
+              group: 'Internal'
+              interval: 300s
+              conditions:
+              - '[STATUS] == any(200, 201, 202)'
+            - name: 'Memos'
+              url: 'https://notes.mtaha.dev'
+              group: 'External'
+              interval: 300s
+              conditions:
+              - '[STATUS] == any(200, 201, 202)'
+            - name: 'Memos'
+              url: 'http://memos-web.memos-k8s.svc.cluster.local:5230'
+              group: 'Internal'
+              interval: 300s
+              conditions:
+              - '[STATUS] == any(200, 201, 202)'
             - name: 'MinIO'
               url: 'https://s3.mtaha.dev'
-              group: 'internal'
+              group: 'External'
               interval: 300s
               conditions:
-                - '[STATUS] == any(200, 201, 202)'
+              - '[STATUS] == any(200, 201, 202)'
+            # - name: 'MinIO'
+            #   url: 'http://minio.minio-k8s.svc.cluster.local'
+            #   group: 'Internal'
+            #   interval: 300s
+            #   conditions:
+            #     - '[STATUS] == any(200, 201, 202)'
+            - name: 'NextCloud'
+              url: 'https://cloud.mtaha.dev/status.php'
+              group: 'External'
+              interval: 300s
+              conditions:
+              - '[STATUS] == any(200, 201, 202)'
+            - name: 'NextCloud'
+              url: 'http://nextcloud.nextcloud-k8s.svc.cluster.local:8080'
+              group: 'Internal'
+              interval: 300s
+              conditions:
+              - '[STATUS] == any(200, 201, 202, 400)'
+            - name: 'Paperless-NGX'
+              url: 'https://paperless.mtaha.dev'
+              group: 'External'
+              interval: 300s
+              conditions:
+              - '[STATUS] == any(200, 201, 202)'
+            - name: 'Paperless-NGX'
+              url: 'http://paperless-ngx-web.paperless-ngx-k8s.svc.cluster.local:8000'
+              group: 'Internal'
+              interval: 300s
+              conditions:
+              - '[STATUS] == any(200, 201, 202)'
             - name: 'Umami'
               url: 'https://umami.mtaha.dev'
-              group: 'internal'
+              group: 'External'
               interval: 300s
               conditions:
-                - '[STATUS] == any(200, 201, 202)'
+              - '[STATUS] == any(200, 201, 202)'
+            - name: 'Umami'
+              url: 'http://umami-web.umami-k8s.svc.cluster.local:3000'
+              group: 'Internal'
+              interval: 300s
+              conditions:
+              - '[STATUS] == any(200, 201, 202)'
             - name: 'Vaultwarden'
               url: 'https://vault.mtaha.dev'
-              group: 'internal'
+              group: 'External'
               interval: 300s
               conditions:
-                - '[STATUS] == any(200, 201, 202)'
+              - '[STATUS] == any(200, 201, 202)'
+            - name: 'Vaultwarden'
+              url: 'http://vaultwarden-web.vaultwarden-k8s.svc.cluster.local:8080'
+              group: 'Internal'
+              interval: 300s
+              conditions:
+              - '[STATUS] == any(200, 201, 202)'
     repoURL: https://twin.github.io/helm-charts
     targetRevision: 1.*
   syncPolicy:
     automated: {}
     syncOptions:
-      - CreateNamespace=true
+    - CreateNamespace=true
