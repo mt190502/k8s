@@ -3,12 +3,8 @@ resources:
   - ingressroute.yml
   - application.yml
 
-# helmCharts:
-#   - name: memos
-#     repo: https://helm.mtaha.dev
-#     releaseName: memos
-#     version: 2.0.1
-#     namespace: memos-k8s
+generatorOptions:
+  disableNameSuffixHash: true
 
 secretGenerator:
   - name: memos-postgres
