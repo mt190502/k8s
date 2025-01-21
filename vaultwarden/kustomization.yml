@@ -3,12 +3,8 @@ resources:
   - ingressroute.yml
   - application.yml
 
-# helmCharts:
-#   - name: vaultwarden
-#     repo: https://helm.mtaha.dev
-#     releaseName: vaultwarden
-#     version: 2.0.1
-#     namespace: vaultwarden-k8s
+generatorOptions:
+  disableNameSuffixHash: true
 
 secretGenerator:
   - name: vaultwarden-postgres
