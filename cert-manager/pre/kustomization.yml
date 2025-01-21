@@ -16,5 +16,6 @@ helmCharts:
 
 secretGenerator:
   - name: cloudflare-api-token-secret
+    namespace: traefik
     envs:
       - ./.env
