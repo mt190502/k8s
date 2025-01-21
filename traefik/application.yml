@@ -13,20 +13,20 @@ spec:
     targetRevision: 33.*
     chart: traefik
     helm:
+      parameters:
+        - name: deployment.replicas
+          value: "1"
+        - name: ports.websecure.hostPort
+          value: "443"
+        - name: ingressClass.enabled
+          value: "true"
+        - name: ingressClass.isDefaultClass
+          value: "true"
+        - name: tlsStore.default.defaultCertificate.secretName
+          value: wildcard-mtaha.dev-tls
       values: |
         nodeSelector:
           kubernetes.io/hostname: w1.srv.mtaha.dev
-
-        deployment:
-          replicas: 1
-
-        ports:
-          websecure:
-            hostPort: 443
-
-        ingressClass:
-          enabled: true
-          isDefaultClass: true
 
         additionalArguments:
           - --entrypoints.name.http3
@@ -35,11 +35,6 @@ spec:
           - --serverstransport.insecureskipverify=true
           #- --entryPoints.web.forwardedHeaders.insecure
           #- --log.level=DEBUG
-
-        tlsStore:
-          default:
-            defaultCertificate:
-              secretName: wildcard-mtaha.dev-tls
   sources: []
   project: default
   syncPolicy:
