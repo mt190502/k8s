@@ -13,11 +13,25 @@ spec:
     chart: umami
     helm:
       parameters:
-        - name: global.web.options.app_secret
-          value: my_strong_secret_key
+      - name: global.web.appSecret.name
+        value: umami-web
+      - name: global.web.appSecret.key
+        value: umami_app_secret
+      - name: global.web.appSecret.autoCreate
+        value: "kustomize"
+      - name: global.postgres.secret.name
+        value: umami-postgres
+      - name: global.postgres.secret.databaseKey
+        value: postgres_database
+      - name: global.postgres.secret.usernameKey
+        value: postgres_username
+      - name: global.postgres.secret.passwordKey
+        value: postgres_password
+      - name: global.postgres.secret.autoCreate
+        value: "kustomize"
     repoURL: https://helm.mtaha.dev
     targetRevision: '*'
   syncPolicy:
     automated: {}
     syncOptions:
-      - CreateNamespace=true
+    - CreateNamespace=true

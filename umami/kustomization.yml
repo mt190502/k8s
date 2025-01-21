@@ -3,19 +3,14 @@ resources:
   - ingressroute.yml
   - application.yml
 
-# helmCharts:
-#   - name: umami
-#     repo: https://helm.mtaha.dev
-#     releaseName: umami
-#     version: 2.0.1
-#     namespace: umami-k8s
-#     valuesInline:
-#       global:
-#         web:
-#           options:
-#             app_secret: my_strong_secret_key
+generatorOptions:
+  disableNameSuffixHash: true
 
 secretGenerator:
+  - name: umami-web
+    namespace: umami-k8s
+    envs:
+      - ./.app-secret.env
   - name: umami-postgres
     namespace: umami-k8s
     envs:
