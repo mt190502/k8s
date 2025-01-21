@@ -11,9 +11,23 @@ spec:
   project: default
   source:
     chart: commafeed
+    helm:
+      parameters:
+      - name: global.web.options.publicUrl
+        value: rss.mtaha.dev
+      - name: global.postgres.secret.name
+        value: commafeed-postgres
+      - name: global.postgres.secret.databaseKey
+        value: postgres_database
+      - name: global.postgres.secret.usernameKey
+        value: postgres_username
+      - name: global.postgres.secret.passwordKey
+        value: postgres_password
+      - name: global.postgres.secret.autoCreate
+        value: "kustomize"
     repoURL: https://helm.mtaha.dev
     targetRevision: '*'
   syncPolicy:
     automated: {}
     syncOptions:
-      - CreateNamespace=true
+    - CreateNamespace=true

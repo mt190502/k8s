@@ -3,12 +3,8 @@ resources:
   - ingressroute.yml
   - application.yml
 
-# helmCharts:
-#   - name: commafeed
-#     repo: https://helm.mtaha.dev
-#     releaseName: commafeed
-#     version: 2.0.1
-#     namespace: commafeed-k8s
+generatorOptions:
+  disableNameSuffixHash: true
 
 secretGenerator:
   - name: commafeed-postgres
