@@ -3,19 +3,8 @@ resources:
   - ingressroute.yml
   - application.yml
 
-# helmCharts:
-#   - name: grafana
-#     repo: https://grafana.github.io/helm-charts
-#     releaseName: grafana
-#     version: 8.8.2
-#     namespace: grafana-k8s
-#     valuesInline:
-#       persistence:
-#         enabled: true
-#         size: 1G
-#       admin:
-#         passwordKey: admin-pass
-#         existingSecret: grafana-secret
+generatorOptions:
+  disableNameSuffixHash: true
 
 secretGenerator:
   - name: grafana-secret
