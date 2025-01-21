@@ -3,20 +3,8 @@ resources:
   - ingressroute.yml
   - application.yml
 
-# helmCharts:
-#   - name: codimd
-#     repo: https://helm.mtaha.dev
-#     releaseName: codimd
-#     version: 2.0.1
-#     namespace: codimd-k8s
-#     valuesInline:
-#       global:
-#         web:
-#           options:
-#             codimd_domain: md.mtaha.dev
-#         postgres:
-#           secret:
-#             autoCreate: kustomize
+generatorOptions:
+  disableNameSuffixHash: true
 
 secretGenerator:
   - name: codimd-postgres
