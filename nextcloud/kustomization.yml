@@ -3,91 +3,15 @@ resources:
   - ingressroute.yml
   - application.yml
 
-# helmCharts:
-#   - name: nextcloud
-#     repo: https://nextcloud.github.io/helm/
-#     releaseName: nextcloud
-#     version: 6.6.2
-#     namespace: nextcloud-k8s
-#     valuesInline:
-#       cronjob:
-#         enabled: true
-#       image:
-#         flavor: fpm
-#       nextcloud:
-#         host: "cloud.mtaha.dev"
-#         username: "administrator"
-#         password: "my_strong_password"
+generatorOptions:
+  disableNameSuffixHash: true
 
-#         configs:
-#           custom.config.php: |
-#             <?php
-#             $CONFIG = array (
-#               'trusted_domains' =>
-#               array (
-#                 0 => 'cloud.mtaha.dev',
-#               ),
-#               'overwrite.cli.url' => 'https://cloud.mtaha.dev',
-#               'overwriteprotocol' => 'https',
-#               'default_phone_region' => 'TR',
-#               'trusted_proxies' =>
-#               array (
-#                 0 => '127.0.0.1',
-#               ),
-#               'maintenance_window_start' => 1,
-#             );
-#         phpConfigs:
-#           zz-nc-custom.ini: |-
-#             memory_limit = 512M
-#             upload_max_filesize = 2G
-#             post_max_size = 600M
-#             max_execution_time = 300
-#             file_uploads = On
-#             allow_url_fopen = On
-
-#       internalDatabase:
-#         enabled: false
-
-#       nginx:
-#         enabled: true
-
-#       externalDatabase:
-#         enabled: true
-#         type: postgresql
-#         user: nextcloud
-#         password: my_strong_password
-#         database: nextcloud
-#         existingSecret:
-#           enabled: false
-
-#       postgresql:
-#         enabled: true
-#         global:
-#           postgresql:
-#             auth:
-#               username: nextcloud
-#               password: my_strong_password
-#               database: nextcloud
-
-#         primary:
-#           persistence:
-#             enabled: true
-#             accessMode: ReadWriteOnce
-#             size: 2Gi
-
-#       #redis:
-#         #enabled: true
-#         #auth:
-#           #enabled: true
-#           #existingSecret: "nextcloud-db"
-#           #existingSecretPasswordKey: "redis-password"
-
-#       replicaCount: 1
-
-#       persistence:
-#         enabled: true
-#         # Use an existing Persistent Volume Claim (must be created ahead of time)
-#         #existingClaim: nextcloud
-#         # storageClass: ""
-#         accessMode: ReadWriteOnce
-#         size: 32Gi
+secretGenerator:
+  - name: nextcloud-app-secret
+    namespace: nextcloud-k8s
+    envs:
+      - ./.app-secret.env
+  - name: nextcloud-db-secret
+    namespace: nextcloud-k8s
+    envs:
+      - ./.db-secret.env
