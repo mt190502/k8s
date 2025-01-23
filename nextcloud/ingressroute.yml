@@ -44,7 +44,7 @@ spec:
       middlewares:
         - name: dav-redirect
         - name: hsts-header
-        - name: nextcloud-req-buffer
+        # - name: nextcloud-req-buffer             # This causes a 500 internal server error
       services:
         - kind: Service
           name: nextcloud
