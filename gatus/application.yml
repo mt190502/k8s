@@ -117,15 +117,18 @@ spec:
             #   conditions:
             #     - '[STATUS] == any(200, 201, 202)'
             - name: 'NextCloud'
-              url: 'https://cloud.mtaha.dev/status.php'
+              url: 'https://cloud.mtaha.dev/'
               group: 'External'
               interval: 300s
               conditions:
               - '[STATUS] == any(200, 201, 202)'
             - name: 'NextCloud'
-              url: 'http://nextcloud.nextcloud-k8s.svc.cluster.local:8080'
+              url: 'http://nextcloud.nextcloud-k8s.svc.cluster.local:8080/login'
               group: 'Internal'
               interval: 300s
+              client:
+                insecure: true
+                ignore-redirect: true
               conditions:
               - '[STATUS] == any(200, 201, 202, 400)'
             - name: 'Paperless-NGX'
