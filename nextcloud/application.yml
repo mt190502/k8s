@@ -72,7 +72,6 @@ spec:
                 'trusted_proxies' =>
                 array (
                   0 => '127.0.0.1',
-                  1 => 'nextcloud.nextcloud-k8s.svc.cluster.local',
                 ),
                 'maintenance_window_start' => 1,
               );
