@@ -1,0 +1,31 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: radicale
+  namespace: argocd
+spec:
+  destination:
+    namespace: radicale-k8s
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: radicale
+    repoURL: https://helm.mtaha.dev
+    targetRevision: '*'
+    helm:
+      parameters:
+        - name: global.main.tls.secretName
+          value: wildcard-mtaha.dev-tls
+        - name: global.main.tls.serverName
+          value: dav.mtaha.dev
+        - name: global.main.tls.enabled
+          value: 'true'
+        - name: secret.settings.enabled
+          value: 'true'
+        - name: secret.settings.autoCreate
+          value: kustomize
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true

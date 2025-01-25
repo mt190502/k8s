@@ -1,0 +1,24 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: radicale-main
+  namespace: radicale-k8s
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`dav.mtaha.dev`)
+      priority: 10
+      services:
+        - kind: Service
+          name: radicale-main
+          namespace: radicale-k8s
+          passHostHeader: true
+          port: 5232
+          scheme: https
+  tls:
+    domains:
+      - main: dav.mtaha.dev
+    secretName: wildcard-mtaha.dev-tls

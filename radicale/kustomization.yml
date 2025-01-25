@@ -1,0 +1,13 @@
+resources:
+  - namespace.yml
+  - application.yml
+  - ingressroute.yml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+secretGenerator:
+  - name: radicale-secret
+    namespace: radicale-k8s
+    envs:
+      - .secret.env
