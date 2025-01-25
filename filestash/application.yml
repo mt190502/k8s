@@ -1,0 +1,29 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: filestash
+  namespace: argocd
+spec:
+  destination:
+    namespace: filestash-k8s
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: filestash
+    helm:
+      parameters:
+      - name: global.web.options.application_url
+        value: https://files.mtaha.dev
+      values: |-
+        nodeSelector:
+          kubernetes.io/hostname: m1.srv.mtaha.dev
+        tolerations:
+        - key: "node-role.kubernetes.io/master"
+          operator: "Exists"
+          effect: "NoSchedule"
+    repoURL: https://helm.mtaha.dev
+    targetRevision: '*'
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
