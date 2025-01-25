@@ -9,7 +9,7 @@ resources:
   - longhorn/
   - codimd/
   - commafeed/
-  # - filestash/
+  - filestash/
   - gatus/
   - grafana/
   - kubernetes-reflector/

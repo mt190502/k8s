@@ -51,6 +51,7 @@ graph TD;
 - cert-manager - For managing certificates
 - CodiMD - For note taking (simple)
 - Commafeed - For RSS feeds
+- Filestash - For file sharing
 - Gatus - For health checks
 - Grafana - For cluster monitoring
 - Kubernetes Reflector - For syncing secrets across namespaces
