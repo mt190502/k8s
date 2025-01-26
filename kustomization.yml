@@ -6,6 +6,7 @@ resources:
   - argocd/post/
   - cert-manager/post/
   - adguard-home/
+  - authentik/
   - longhorn/
   - codimd/
   - commafeed/

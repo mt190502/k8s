@@ -48,6 +48,7 @@ graph TD;
 
 - AdGuard Home - For DNS and ad blocking
 - ArgoCD - For GitOps, manages all the deployments (except itself and the CNI)
+- Authentik - For OAuth2 and OIDC
 - cert-manager - For managing certificates
 - CodiMD - For note taking (simple)
 - Commafeed - For RSS feeds
