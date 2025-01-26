@@ -1,0 +1,62 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: authentik
+  namespace: argocd
+spec:
+  destination:
+    namespace: authentik
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://charts.goauthentik.io/
+    targetRevision: '*'
+    chart: authentik
+    helm:
+      parameters:
+        - name: authentik.secret_key
+          value: my_strong_secret_key
+        - name: postgresql.enabled
+          value: 'true'
+        - name: postgresql.global.postgresql.auth.existingSecret
+          value: authentik-postgres-credentials
+        - name: postgresql.global.postgresql.auth.secretKeys.adminPasswordKey
+          value: username
+        - name: postgresql.global.postgresql.auth.secretKeys.userPasswordKey
+          value: password
+        - name: redis.enabled
+          value: 'true'
+      values: |
+        authentik:
+          postgresql:
+            username: file:///postgres-creds/username
+            password: file:///postgres-creds/password
+        server:
+          volumes:
+            - name: postgres-creds
+              secret:
+                secretName: authentik-postgres-credentials
+          volumeMounts:
+            - name: postgres-creds
+              mountPath: /postgres-creds
+              readOnly: true
+        worker:
+          volumes:
+            - name: postgres-creds
+              secret:
+                secretName: authentik-postgres-credentials
+          volumeMounts:
+            - name: postgres-creds
+              mountPath: /postgres-creds
+              readOnly: true
+        global:
+          nodeSelector:
+            kubernetes.io/hostname: w1.srv.mtaha.dev
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+    syncOptions:
+      - CreateNamespace=true

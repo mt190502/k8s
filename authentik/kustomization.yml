@@ -1,0 +1,32 @@
+resources:
+  - namespace.yml
+  - application.yml
+  - ingressroute.yml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+configMapGenerator:
+  - name: authentik-config
+    namespace: authentik
+    envs:
+      - .app-secret.env
+
+secretGenerator:
+  - name: authentik-postgres-credentials
+    namespace: authentik
+    envs:
+      - .db-secret.env
+
+replacements:
+  - source:
+      kind: ConfigMap
+      name: authentik-config
+      fieldPath: data.SECRET_KEY
+    targets:
+      - select:
+          kind: Application
+          name: authentik
+          namespace: argocd
+        fieldPaths:
+          - spec.source.helm.parameters.0.value
