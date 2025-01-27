@@ -4,7 +4,7 @@ kind: IngressRoute
 metadata:
   name: gatus
   namespace: gatus-k8s
-pec:
+spec:
   entryPoints:
     - websecure
   routes:
