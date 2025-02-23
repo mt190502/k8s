@@ -1,0 +1,33 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jellyfin
+  namespace: argocd
+spec:
+  destination:
+    namespace: jellyfin-k8s
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: jellyfin
+    helm:
+      parameters:
+      - name: persistence.config.enabled
+        value: "true"
+      - name: persistence.config.accessMode
+        value: ReadWriteOnce
+      - name: persistence.config.size
+        value: 1Gi
+      - name: persistence.media.enabled
+        value: "true"
+      - name: persistence.media.accessMode
+        value: ReadWriteOnce
+      - name: persistence.media.size
+        value: 10Gi
+    repoURL: https://jellyfin.github.io/jellyfin-helm
+    targetRevision: '2.*'
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true

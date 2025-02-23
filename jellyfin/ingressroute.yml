@@ -1,0 +1,24 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: jellyfin
+  namespace: jellyfin-k8s
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`music.mtaha.dev`)
+      priority: 10
+      services:
+        - kind: Service
+          name: jellyfin
+          namespace: jellyfin-k8s
+          passHostHeader: true
+          port: 8096
+          scheme: http
+  tls:
+    domains:
+      - main: music.mtaha.dev
+    secretName: wildcard-mtaha.dev-tls

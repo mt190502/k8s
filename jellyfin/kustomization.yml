@@ -1,0 +1,4 @@
+resources:
+  - namespace.yml
+  - ingressroute.yml
+  - application.yml
