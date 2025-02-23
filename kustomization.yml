@@ -13,6 +13,7 @@ resources:
   - filestash/
   - gatus/
   - grafana/
+  - jellyfin/
   - kubernetes-reflector/
   - memos/
   # - minio/

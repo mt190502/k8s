@@ -53,6 +53,7 @@ graph TD;
 - CodiMD - For note taking (simple)
 - Commafeed - For RSS feeds
 - Filestash - For file sharing
+- Jellyfin - For media streaming
 - Gatus - For health checks
 - Grafana - For cluster monitoring
 - Kubernetes Reflector - For syncing secrets across namespaces
