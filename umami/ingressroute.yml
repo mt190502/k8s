@@ -19,7 +19,7 @@ spec:
           port: 3000
           scheme: http
     - kind: Rule
-      match: "Host(`umami.mtaha.dev`) && PathPrefix(`/`)"
+      match: "Host(`umami.mtaha.dev`) && Method(`GET`) || (Method(`POST`) && (PathPrefix(`/websites`) || PathPrefix(`/dashboard`)))"
       priority: 11
       services:
         - kind: Service
