@@ -11,3 +11,8 @@ secretGenerator:
     namespace: codimd-k8s
     envs:
       - ./.db-secret.env
+  - name: basic-auth-secret
+    namespace: codimd-k8s
+    type: kubernetes.io/basic-auth
+    envs:
+      - ./.basic-auth-secret.env
