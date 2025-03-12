@@ -29,3 +29,28 @@ spec:
     automated: {}
     syncOptions:
     - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus
+  namespace: argocd
+spec:
+  destination:
+    namespace: grafana-k8s
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: prometheus
+    helm:
+      parameters:
+      - name: prometheus-node-exporter.service.port
+        value: "9200"
+      - name: server.persistentVolume.size
+        value: 4Gi
+    repoURL: https://prometheus-community.github.io/helm-charts/
+    targetRevision: 27.*
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
