@@ -39,8 +39,6 @@ spec:
                 value: eng
               - name: PAPERLESS_OCR_LANGUAGES
                 value: tur eng
-              - name: PAPERLESS_DBENGINE
-                value: postgresql
               - name: PAPERLESS_ENABLE_NLTK
                 value: false
               - name: PAPERLESS_OCR_CLEAN
@@ -49,8 +47,6 @@ spec:
                 value: skip
               - name: PAPERLESS_OCR_SKIP_ARCHIVE_FILE
                 value: always
-              - name: PAPERLESS_REDIS
-                value: redis://paperless-ngx-broker:6379
               - name: PAPERLESS_TASK_WORKERS
                 value: 1
               - name: PAPERLESS_THREADS_PER_WORKER
