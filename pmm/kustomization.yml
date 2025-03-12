@@ -1,0 +1,13 @@
+resources:
+  - namespace.yml
+  - ingressroute.yml
+  - application.yml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+secretGenerator:
+  - name: pmm-secret
+    namespace: pmm-k8s
+    envs:
+      - ./.app-secret.env

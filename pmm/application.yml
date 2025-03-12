@@ -1,0 +1,29 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pmm
+  namespace: argocd
+spec:
+  destination:
+    namespace: pmm-k8s
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: pmm
+    helm:
+      parameters:
+      - name: secret.create
+        value: 'true'
+      - name: secret.name
+        value: pmm-secret
+      - name: secret.pmm_password
+        value: my_initial_password
+      - name: storage.size
+        value: 4Gi
+    repoURL: https://percona.github.io/percona-helm-charts/
+    targetRevision: 1.*
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true

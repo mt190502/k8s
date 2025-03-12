@@ -1,0 +1,24 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pmm
+  namespace: pmm-k8s
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`pmm.mtaha.dev`)
+      priority: 10
+      services:
+        - kind: Service
+          name: monitoring-service
+          namespace: pmm-k8s
+          passHostHeader: true
+          port: 80
+          scheme: http
+  tls:
+    domains:
+      - main: pmm.mtaha.dev
+    secretName: wildcard-mtaha.dev-tls
