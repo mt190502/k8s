@@ -5,21 +5,21 @@ resources:
   - traefik/
   - argocd/post/
   - cert-manager/post/
-  - adguard-home/
-  - authentik/
+  # - adguard-home/
+  # - authentik/
   - longhorn/
   - codimd/
   - commafeed/
   - filestash/
   - gatus/
   - grafana/
-  - jellyfin/
+  # - jellyfin/
   - kubernetes-reflector/
   - memos/
   # - minio/
-  - nextcloud/
+  # - nextcloud/
   - paperless-ngx/
   - radicale/
   - tailscale-operator/
   - umami/
-  - vaultwarden/
+  # - vaultwarden/
