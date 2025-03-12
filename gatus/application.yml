@@ -49,7 +49,7 @@ spec:
               group: 'External'
               interval: 300s
               conditions:
-              - '[STATUS] == any(200, 201, 202)'
+              - '[STATUS] == any(200, 201, 202, 401)'
             - name: 'CodiMD'
               url: 'http://codimd-web.codimd-k8s.svc.cluster.local:3000'
               group: 'Internal'
@@ -116,21 +116,21 @@ spec:
             #   interval: 300s
             #   conditions:
             #     - '[STATUS] == any(200, 201, 202)'
-            - name: 'NextCloud'
-              url: 'https://cloud.mtaha.dev/'
-              group: 'External'
-              interval: 300s
-              conditions:
-              - '[STATUS] == any(200, 201, 202)'
-            - name: 'NextCloud'
-              url: 'http://nextcloud.nextcloud-k8s.svc.cluster.local:8080/login'
-              group: 'Internal'
-              interval: 300s
-              client:
-                insecure: true
-                ignore-redirect: true
-              conditions:
-              - '[STATUS] == any(200, 201, 202, 400)'
+            #- name: 'NextCloud'
+            #  url: 'https://cloud.mtaha.dev/'
+            #  group: 'External'
+            #  interval: 300s
+            #  conditions:
+            #  - '[STATUS] == any(200, 201, 202)'
+            #- name: 'NextCloud'
+            #  url: 'http://nextcloud.nextcloud-k8s.svc.cluster.local:8080/login'
+            #  group: 'Internal'
+            #  interval: 300s
+            #  client:
+            #    insecure: true
+            #    ignore-redirect: true
+            #  conditions:
+            #  - '[STATUS] == any(200, 201, 202, 400)'
             - name: 'Paperless-NGX'
               url: 'https://paperless.mtaha.dev'
               group: 'External'
@@ -155,18 +155,18 @@ spec:
               interval: 300s
               conditions:
               - '[STATUS] == any(200, 201, 202)'
-            - name: 'Vaultwarden'
-              url: 'https://vault.mtaha.dev'
-              group: 'External'
-              interval: 300s
-              conditions:
-              - '[STATUS] == any(200, 201, 202)'
-            - name: 'Vaultwarden'
-              url: 'http://vaultwarden-web.vaultwarden-k8s.svc.cluster.local:8080'
-              group: 'Internal'
-              interval: 300s
-              conditions:
-              - '[STATUS] == any(200, 201, 202)'
+            #- name: 'Vaultwarden'
+            #  url: 'https://vault.mtaha.dev'
+            #  group: 'External'
+            #  interval: 300s
+            #  conditions:
+            #  - '[STATUS] == any(200, 201, 202)'
+            #- name: 'Vaultwarden'
+            #  url: 'http://vaultwarden-web.vaultwarden-k8s.svc.cluster.local:8080'
+            #  group: 'Internal'
+            #  interval: 300s
+            #  conditions:
+            #  - '[STATUS] == any(200, 201, 202)'
     repoURL: https://twin.github.io/helm-charts
     targetRevision: 1.*
   syncPolicy:
