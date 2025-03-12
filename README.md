@@ -62,6 +62,7 @@ graph TD;
 - MetalLB - Load balancer, network policies
 - Nextcloud - For file sharing
 - Paperless-NGX - For document management
+- PMM - For database monitoring
 - Radicale - For CalDAV and CardDAV server
 - Tailscale Operator - For VPN
 - Traefik - Ingress controller

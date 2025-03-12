@@ -19,6 +19,7 @@ resources:
   # - minio/
   # - nextcloud/
   - paperless-ngx/
+  # - pmm/
   - radicale/
   - tailscale-operator/
   - umami/
