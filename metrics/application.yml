@@ -1,0 +1,31 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-prometheus-stack
+  namespace: argocd
+spec:
+  destination:
+    namespace: metrics-k8s
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: kube-prometheus-stack
+    helm:
+      parameters:
+      - name: grafana.persistence.enabled
+        value: "true"
+      - name: grafana.persistence.size
+        value: 1Gi
+      - name: grafana.admin.userKey
+        value: admin-user
+      - name: grafana.admin.passwordKey
+        value: admin-pass
+      - name: grafana.admin.existingSecret
+        value: kube-prometheus-stack-grafana
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 70.*
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true

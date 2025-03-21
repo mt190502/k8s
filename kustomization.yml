@@ -12,10 +12,10 @@ resources:
   - commafeed/
   - filestash/
   - gatus/
-  - grafana/
   # - jellyfin/
   - kubernetes-reflector/
   - memos/
+  - metrics/
   # - minio/
   # - nextcloud/
   - paperless-ngx/

@@ -55,7 +55,7 @@ graph TD;
 - Filestash - For file sharing
 - Jellyfin - For media streaming
 - Gatus - For health checks
-- Grafana - For cluster monitoring
+- Kubernetes Prometheus Stack - For monitoring and alerting
 - Kubernetes Reflector - For syncing secrets across namespaces
 - Longhorn - For storage provisioning
 - Memos - For note taking (advanced)
