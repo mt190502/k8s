@@ -1,0 +1,3 @@
+resources:
+  - externalnames.yml
+  - minio-external-svc.yml
