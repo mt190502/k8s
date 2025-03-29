@@ -6,40 +6,40 @@
 
 - m1
   - Hostname: m1.srv.mtaha.dev
-  - CPU: Intel(R) Celeron(R) N3450 (4) @ 2.20 GHz (x86_64)
-  - RAM: 8 GB
-  - OS: Fedora 41 Cloud Edition
-  - Location: Homelab
-  - Machine: Zimaboard 832
-
-- w1
-  - Hostname: w1.srv.mtaha.dev
   - CPU: Intel Xeon (Skylake, IBRS, no TSX) (4) @ 2.10 GHz (x86_64)
   - RAM: 8 GB
   - OS: Fedora 41 Cloud Edition
   - Location: Hetzner Cloud
   - Machine: CX32
 
-- w2
-  - Hostname: w2.srv.mtaha.dev
+- w1
+  - Hostname: w1.srv.mtaha.dev
   - CPU: ARM Cortex-A76 (4) @ 2.40 GHz (aarch64)
   - RAM: 8 GB
   - OS: Fedora 41 Cloud Edition
   - Location: Homelab
   - Machine: Raspberry Pi 5 - 8 GB
 
+- w2
+  - Hostname: w2.srv.mtaha.dev
+  - CPU: Intel(R) Celeron(R) N3450 (4) @ 2.20 GHz (x86_64)
+  - RAM: 8 GB
+  - OS: Fedora 41 Cloud Edition
+  - Location: Homelab
+  - Machine: Zimaboard 832
+
 ### Workload
 
 ```mermaid
 graph TD;
-    Tailscale-->m1
     Tailscale-->w1
+    Tailscale-->m1
     Tailscale-->w2
-    MetalLB-->m1
     MetalLB-->w1
+    MetalLB-->m1
     MetalLB-->w2
-    m1
-    w1<-->Ingress
+    w1
+    m1<-->Ingress
     w2
     Ingress<-->cloudflare["cloudflare (roundrobin)"]
 ```
@@ -52,9 +52,10 @@ graph TD;
 - cert-manager - For managing certificates
 - CodiMD - For note taking (simple)
 - Commafeed - For RSS feeds
+- DNSUtils - For troubleshooting DNS
 - Filestash - For file sharing
-- Jellyfin - For media streaming
 - Gatus - For health checks
+- Jellyfin - For media streaming
 - Kubernetes Prometheus Stack - For monitoring and alerting
 - Kubernetes Reflector - For syncing secrets across namespaces
 - Longhorn - For storage provisioning

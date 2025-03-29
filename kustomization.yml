@@ -1,22 +1,23 @@
 resources:
   - argocd/pre/
-  - cert-manager/pre
+  - cert-manager/pre/
   - metallb/
   - traefik/
   - argocd/post/
   - cert-manager/post/
+  - longhorn/
+  - kubernetes-reflector/
   # - adguard-home/
   # - authentik/
-  - longhorn/
   - codimd/
   - commafeed/
+  - custom/
+  - dnsutils/
   - filestash/
   - gatus/
   # - jellyfin/
-  - kubernetes-reflector/
   - memos/
   - metrics/
-  # - minio/
   # - nextcloud/
   - paperless-ngx/
   # - pmm/
