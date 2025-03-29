@@ -11,21 +11,21 @@ spec:
   project: default
   source:
     chart: radicale
-    repoURL: https://helm.mtaha.dev
-    targetRevision: '*'
     helm:
       parameters:
-        - name: global.main.tls.secretName
-          value: wildcard-mtaha.dev-tls
-        - name: global.main.tls.serverName
-          value: dav.mtaha.dev
-        - name: global.main.tls.enabled
-          value: 'true'
-        - name: secret.settings.enabled
-          value: 'true'
-        - name: secret.settings.autoCreate
-          value: kustomize
+      - name: global.main.tls.secretName
+        value: wildcard-mtaha.dev-tls
+      - name: global.main.tls.serverName
+        value: dav.mtaha.dev
+      - name: global.main.tls.enabled
+        value: "true"
+      - name: secret.settings.enabled
+        value: "true"
+      - name: secret.settings.autoCreate
+        value: kustomize
+    repoURL: https://helm.mtaha.dev
+    targetRevision: '*'
   syncPolicy:
     automated: {}
     syncOptions:
-      - CreateNamespace=true
+    - CreateNamespace=true

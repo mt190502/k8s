@@ -14,7 +14,7 @@ spec:
     helm:
       values: |
         nodeSelector:
-          kubernetes.io/hostname: w1.srv.mtaha.dev
+          kubernetes.io/hostname: m1.srv.mtaha.dev
         config:
           ui:
             header: 'mtaha.dev - Health Status'
@@ -23,6 +23,12 @@ spec:
             #- name: 'AdGuard Home'
             #  url: 'https://dns.mtaha.dev'
             #  group: 'External'
+            #  interval: 300s
+            #  conditions:
+            #    - '[STATUS] == any(200, 201, 202)'
+            #- name: 'AdGuard Home'
+            #  url: 'http://adguard-home-web.adguard-home-k8s.svc.cluster.local'
+            #  group: 'Internal'
             #  interval: 300s
             #  conditions:
             #    - '[STATUS] == any(200, 201, 202)'
@@ -38,12 +44,6 @@ spec:
               interval: 300s
               conditions:
               - '[STATUS] == any(200, 201, 202)'
-            #- name: 'Caddy Repo Server'
-            #  url: 'https://repo.mtaha.dev'
-            #  group: 'internal'
-            #  interval: 300s
-            #  conditions:
-            #    - '[STATUS] == any(200, 201, 202)'
             - name: 'CodiMD'
               url: 'https://md.mtaha.dev'
               group: 'External'
@@ -87,11 +87,23 @@ spec:
               conditions:
               - '[STATUS] == any(200, 201, 202)'
             - name: 'Grafana'
-              url: 'http://grafana.grafana-k8s.svc.cluster.local'
+              url: 'http://kube-prometheus-stack-grafana.metrics-k8s.svc.cluster.local'
               group: 'Internal'
               interval: 300s
               conditions:
               - '[STATUS] == any(200, 201, 202)'
+            #- name: 'Jellyfin'
+            #  url: 'https://music.mtaha.dev'
+            #  group: 'External'
+            #  interval: 300s
+            #  conditions:
+            #  - '[STATUS] == any(200, 201, 202)'
+            #- name: 'Jellyfin'
+            #  url: 'http://jellyfin.jellyfin-k8s.svc.cluster.local:8096'
+            #  group: 'Internal'
+            #  interval: 300s
+            #  conditions:
+            #  - '[STATUS] == any(200, 201, 202)'
             - name: 'Memos'
               url: 'https://notes.mtaha.dev'
               group: 'External'
@@ -143,6 +155,18 @@ spec:
               interval: 300s
               conditions:
               - '[STATUS] == any(200, 201, 202)'
+            - name: 'Radicale'
+              url: 'https://dav.mtaha.dev'
+              group: 'External'
+              interval: 300s
+              conditions:
+              - '[STATUS] == any(200, 201, 202)'
+            - name: 'Radicale'
+              url: 'tcp://radicale-main.radicale-k8s.svc.cluster.local:5232'
+              group: 'Internal'
+              interval: 300s
+              conditions:
+              - '[CONNECTED] == true'
             - name: 'Umami'
               url: 'https://umami.mtaha.dev'
               group: 'External'

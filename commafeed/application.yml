@@ -24,7 +24,10 @@ spec:
       - name: global.postgres.secret.passwordKey
         value: postgres_password
       - name: global.postgres.secret.autoCreate
-        value: "kustomize"
+        value: kustomize
+      values: |-
+        nodeSelector:
+          kubernetes.io/hostname: m1.srv.mtaha.dev
     repoURL: https://helm.mtaha.dev
     targetRevision: '*'
   syncPolicy:

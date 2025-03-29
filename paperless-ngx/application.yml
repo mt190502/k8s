@@ -20,7 +20,7 @@ spec:
       - name: global.web.appSecret.key
         value: paperless_secret_key
       - name: global.web.appSecret.autoCreate
-        value: "kustomize"
+        value: kustomize
       - name: global.postgres.secret.name
         value: paperless-ngx-postgres
       - name: global.postgres.secret.databaseKey
@@ -30,7 +30,11 @@ spec:
       - name: global.postgres.secret.passwordKey
         value: postgres_password
       - name: global.postgres.secret.autoCreate
-        value: "kustomize"
+        value: kustomize
+      - name: resources.limits.web.cpu
+        value: 250m
+      - name: resources.requests.web.storage
+        value: 2Gi
       values: |-
         global:
           web:

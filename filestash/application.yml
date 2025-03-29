@@ -14,14 +14,10 @@ spec:
     helm:
       parameters:
       - name: global.web.options.application_url
-        value: https://files.mtaha.dev
+        value: files.mtaha.dev
       values: |-
         nodeSelector:
-          kubernetes.io/hostname: m1.srv.mtaha.dev
-        tolerations:
-        - key: "node-role.kubernetes.io/master"
-          operator: "Exists"
-          effect: "NoSchedule"
+          kubernetes.io/hostname: w2.srv.mtaha.dev
     repoURL: https://helm.mtaha.dev
     targetRevision: '*'
   syncPolicy:

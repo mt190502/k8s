@@ -22,7 +22,7 @@ spec:
       - name: global.postgres.secret.passwordKey
         value: postgres_password
       - name: global.postgres.secret.autoCreate
-        value: "kustomize"
+        value: kustomize
     repoURL: https://helm.mtaha.dev
     targetRevision: '*'
   syncPolicy:

@@ -11,8 +11,12 @@ spec:
   project: default
   source:
     chart: reflector
+    helm:
+      parameters:
+      - name: cron.schedule
+        value: '*/15 * * * *'
     repoURL: https://emberstack.github.io/helm-charts
-    targetRevision: 7.*
+    targetRevision: '*'
   syncPolicy:
     automated: {}
     syncOptions:
