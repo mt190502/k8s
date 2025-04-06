@@ -69,6 +69,7 @@ graph TD;
 - Traefik - Ingress controller
 - Umami - For analytics
 - Vaultwarden - For password management
+- Vikunja - For self-hosted task management
 
 ## Installation
 

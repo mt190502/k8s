@@ -1,0 +1,39 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vikunja
+  namespace: argocd
+spec:
+  destination:
+    namespace: vikunja-k8s
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: vikunja
+    helm:
+      parameters:
+      - name: global.web.options.publicurl
+        value: https://plan.mtaha.dev
+      - name: global.web.appSecret.name
+        value: vikunja-web
+      - name: global.web.appSecret.key
+        value: vikunja_app_secret
+      - name: global.web.appSecret.autoCreate
+        value: kustomize
+      - name: global.postgres.secret.name
+        value: vikunja-postgres
+      - name: global.postgres.secret.databaseKey
+        value: postgres_database
+      - name: global.postgres.secret.usernameKey
+        value: postgres_username
+      - name: global.postgres.secret.passwordKey
+        value: postgres_password
+      - name: global.postgres.secret.autoCreate
+        value: "kustomize"
+    repoURL: https://helm.mtaha.dev
+    targetRevision: '*'
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true

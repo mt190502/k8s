@@ -25,3 +25,4 @@ resources:
   - tailscale-operator/
   - umami/
   # - vaultwarden/
+  - vikunja/

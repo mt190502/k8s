@@ -1,0 +1,17 @@
+resources:
+  - namespace.yml
+  - ingressroute.yml
+  - application.yml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+secretGenerator:
+  - name: vikunja-web
+    namespace: vikunja-k8s
+    envs:
+      - ./.app-secret.env
+  - name: vikunja-postgres
+    namespace: vikunja-k8s
+    envs:
+      - ./.db-secret.env
