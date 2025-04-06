@@ -65,6 +65,7 @@ graph TD;
 - Paperless-NGX - For document management
 - PMM - For database monitoring
 - Radicale - For CalDAV and CardDAV server
+- Redmine - For project management
 - Tailscale Operator - For VPN
 - Traefik - Ingress controller
 - Umami - For analytics
