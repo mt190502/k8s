@@ -16,16 +16,19 @@ spec:
       - name: global.postgres.secret.name
         value: vaultwarden-postgres
       - name: global.postgres.secret.databaseKey
-        value: postgres_database
+        value: database
       - name: global.postgres.secret.usernameKey
-        value: postgres_username
+        value: username
       - name: global.postgres.secret.passwordKey
-        value: postgres_password
+        value: password
       - name: global.postgres.secret.autoCreate
-        value: "kustomize"
+        value: kustomize
+      - name: global.postgres.cnpg.enabled
+        value: "true"
+      - name: global.postgres.cnpg.replicas
+        value: "1"
     repoURL: https://helm.mtaha.dev
     targetRevision: '*'
   syncPolicy:
-    automated: {}
     syncOptions:
     - CreateNamespace=true

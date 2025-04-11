@@ -24,17 +24,21 @@ spec:
       - name: global.postgres.secret.name
         value: paperless-ngx-postgres
       - name: global.postgres.secret.databaseKey
-        value: postgres_database
+        value: database
       - name: global.postgres.secret.usernameKey
-        value: postgres_username
+        value: username
       - name: global.postgres.secret.passwordKey
-        value: postgres_password
+        value: password
       - name: global.postgres.secret.autoCreate
         value: kustomize
       - name: resources.limits.web.cpu
         value: 250m
       - name: resources.requests.web.storage
         value: 2Gi
+      - name: global.postgres.cnpg.enabled
+        value: "true"
+      - name: global.postgres.cnpg.replicas
+        value: "1"
       values: |-
         global:
           web:
