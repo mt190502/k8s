@@ -50,6 +50,7 @@ graph TD;
 - ArgoCD - For GitOps, manages all the deployments (except itself and the CNI)
 - Authentik - For OAuth2 and OIDC
 - cert-manager - For managing certificates
+- CloudNativePG - For PostgreSQL operator
 - CodiMD - For note taking (simple)
 - Commafeed - For RSS feeds
 - DNSUtils - For troubleshooting DNS
