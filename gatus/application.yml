@@ -191,6 +191,18 @@ spec:
             #  interval: 300s
             #  conditions:
             #  - '[STATUS] == any(200, 201, 202)'
+            - name: 'Vikunja'
+              url: 'https://plan.mtaha.dev'
+              group: 'External'
+              interval: 300s
+              conditions:
+              - '[STATUS] == any(200, 201, 202)'
+            - name: 'Vikunja'
+              url: 'http://vikunja-web.vikunja-k8s.svc.cluster.local:3456'
+              group: 'Internal'
+              interval: 300s
+              conditions:
+              - '[STATUS] == any(200, 201, 202)'
     repoURL: https://twin.github.io/helm-charts
     targetRevision: 1.*
   syncPolicy:
