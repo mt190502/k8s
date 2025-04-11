@@ -13,8 +13,10 @@ spec:
     chart: longhorn
     helm:
       parameters:
-        - name: preUpgradeChecker.jobEnabled
-          value: 'false'
+      - name: preUpgradeChecker.jobEnabled
+        value: "false"
+      - name: longhornUI.replicas
+        value: "3"
       values: |-
         global:
           tolerations:
