@@ -13,7 +13,7 @@ spec:
       priority: 10
       services:
         - kind: Service
-          name: redmine-web
+          name: redmine-main
           namespace: redmine-k8s
           passHostHeader: true
           port: 3000

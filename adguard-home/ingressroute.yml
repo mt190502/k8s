@@ -13,7 +13,7 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: adguard-home-web
+  name: adguard-home-main
   namespace: adguard-home-k8s
 spec:
   entryPoints:
@@ -26,7 +26,7 @@ spec:
       priority: 10
       services:
         - kind: Service
-          name: adguard-home-web
+          name: adguard-home-main
           namespace: adguard-home-k8s
           passHostHeader: true
           port: web-ssl

@@ -7,7 +7,7 @@ generatorOptions:
   disableNameSuffixHash: true
 
 secretGenerator:
-  - name: vaultwarden-postgres
+  - name: vaultwarden-postgresql
     namespace: vaultwarden-k8s
     envs:
       - ./.db-secret.env

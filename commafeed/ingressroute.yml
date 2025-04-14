@@ -13,7 +13,7 @@ spec:
       priority: 10
       services:
         - kind: Service
-          name: commafeed-web
+          name: commafeed-main
           namespace: commafeed-k8s
           passHostHeader: true
           port: 80

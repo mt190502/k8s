@@ -13,7 +13,7 @@ spec:
       priority: 10
       services:
         - kind: Service
-          name: umami-web
+          name: umami-main
           namespace: umami-k8s
           passHostHeader: true
           port: 3000
@@ -23,7 +23,7 @@ spec:
       priority: 11
       services:
         - kind: Service
-          name: umami-web
+          name: umami-main
           namespace: umami-k8s
           passHostHeader: true
           port: 3000

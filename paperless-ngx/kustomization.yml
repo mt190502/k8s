@@ -7,11 +7,11 @@ generatorOptions:
   disableNameSuffixHash: true
 
 secretGenerator:
-  - name: paperless-ngx-web
+  - name: paperless-ngx-secret
     namespace: paperless-ngx-k8s
     envs:
       - ./.app-secret.env
-  - name: paperless-ngx-postgres
+  - name: paperless-ngx-postgresql
     namespace: paperless-ngx-k8s
     envs:
       - ./.db-secret.env

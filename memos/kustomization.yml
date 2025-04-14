@@ -7,7 +7,7 @@ generatorOptions:
   disableNameSuffixHash: true
 
 secretGenerator:
-  - name: memos-postgres
+  - name: memos-postgresql
     namespace: memos-k8s
     envs:
       - ./.db-secret.env

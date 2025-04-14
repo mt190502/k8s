@@ -7,11 +7,11 @@ generatorOptions:
   disableNameSuffixHash: true
 
 secretGenerator:
-  - name: umami-web
+  - name: umami-secret
     namespace: umami-k8s
     envs:
       - ./.app-secret.env
-  - name: umami-postgres
+  - name: umami-postgresql
     namespace: umami-k8s
     envs:
       - ./.db-secret.env

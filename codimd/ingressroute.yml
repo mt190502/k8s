@@ -24,7 +24,7 @@ spec:
         - name: basic-auth
       services:
         - kind: Service
-          name: codimd-web
+          name: codimd-main
           namespace: codimd-k8s
           passHostHeader: true
           port: 3000

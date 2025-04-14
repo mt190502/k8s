@@ -13,31 +13,19 @@ spec:
     chart: vikunja
     helm:
       parameters:
-      - name: global.web.options.publicurl
+      - name: global.main.options.publicurl
         value: https://plan.mtaha.dev
-      - name: global.web.appSecret.name
-        value: vikunja-web
-      - name: global.web.appSecret.key
-        value: vikunja_app_secret
-      - name: global.web.appSecret.autoCreate
+      - name: global.main.appSecret.autoCreate
         value: kustomize
-      - name: global.postgres.secret.name
-        value: vikunja-postgres
-      - name: global.postgres.secret.databaseKey
-        value: database
-      - name: global.postgres.secret.usernameKey
-        value: username
-      - name: global.postgres.secret.passwordKey
-        value: password
-      - name: global.postgres.secret.autoCreate
+      - name: global.postgresql.secret.autoCreate
         value: kustomize
-      - name: global.postgres.cnpg.enabled
+      - name: global.postgresql.cnpg.enabled
         value: "true"
-      - name: global.postgres.cnpg.replicas
+      - name: global.postgresql.cnpg.replicas
         value: "1"
       values: |-
         global:
-          web:
+          main:
             environments:
               - name: VIKUNJA_SERVICE_ENABLEREGISTRATION
                 value: false

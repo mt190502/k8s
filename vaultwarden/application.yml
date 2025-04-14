@@ -13,19 +13,19 @@ spec:
     chart: vaultwarden
     helm:
       parameters:
-      - name: global.postgres.secret.name
-        value: vaultwarden-postgres
-      - name: global.postgres.secret.databaseKey
+      - name: global.postgresql.secret.name
+        value: vaultwarden-postgresql
+      - name: global.postgresql.secret.databaseKey
         value: database
-      - name: global.postgres.secret.usernameKey
+      - name: global.postgresql.secret.usernameKey
         value: username
-      - name: global.postgres.secret.passwordKey
+      - name: global.postgresql.secret.passwordKey
         value: password
-      - name: global.postgres.secret.autoCreate
+      - name: global.postgresql.secret.autoCreate
         value: kustomize
-      - name: global.postgres.cnpg.enabled
+      - name: global.postgresql.cnpg.enabled
         value: "true"
-      - name: global.postgres.cnpg.replicas
+      - name: global.postgresql.cnpg.replicas
         value: "1"
     repoURL: https://helm.mtaha.dev
     targetRevision: '*'

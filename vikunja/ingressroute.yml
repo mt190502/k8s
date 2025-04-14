@@ -13,7 +13,7 @@ spec:
       priority: 10
       services:
         - kind: Service
-          name: vikunja-web
+          name: vikunja-main
           namespace: vikunja-k8s
           passHostHeader: true
           port: 3456

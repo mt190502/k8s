@@ -13,7 +13,7 @@ spec:
       priority: 10
       services:
         - kind: Service
-          name: memos-web
+          name: memos-main
           namespace: memos-k8s
           passHostHeader: true
           port: 5230

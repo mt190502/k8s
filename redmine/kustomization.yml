@@ -7,7 +7,7 @@ generatorOptions:
   disableNameSuffixHash: true
 
 secretGenerator:
-  - name: redmine-postgres
+  - name: redmine-postgresql
     namespace: redmine-k8s
     envs:
       - ./.db-secret.env

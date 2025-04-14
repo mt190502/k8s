@@ -13,24 +13,14 @@ spec:
     chart: codimd
     helm:
       parameters:
-      - name: global.web.options.codimd_domain
+      - name: global.main.options.codimd_domain
         value: md.mtaha.dev
-      - name: global.postgres.secret.name
-        value: codimd-postgres
-      - name: global.postgres.secret.databaseKey
-        value: database
-      - name: global.postgres.secret.usernameKey
-        value: username
-      - name: global.postgres.secret.passwordKey
-        value: password
-      - name: global.postgres.secret.autoCreate
-        value: kustomize
-      - name: global.postgres.external.enabled
-        value: "false"
-      - name: global.postgres.cnpg.enabled
+      - name: global.postgresql.cnpg.enabled
         value: "true"
-      - name: global.postgres.cnpg.replicas
+      - name: global.postgresql.cnpg.replicas
         value: "1"
+      - name: global.postgresql.secret.autoCreate
+        value: kustomize
     repoURL: https://helm.mtaha.dev
     targetRevision: '*'
   syncPolicy:

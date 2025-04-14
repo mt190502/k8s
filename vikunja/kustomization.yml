@@ -7,11 +7,11 @@ generatorOptions:
   disableNameSuffixHash: true
 
 secretGenerator:
-  - name: vikunja-web
+  - name: vikunja-secret
     namespace: vikunja-k8s
     envs:
       - ./.app-secret.env
-  - name: vikunja-postgres
+  - name: vikunja-postgresql
     namespace: vikunja-k8s
     envs:
       - ./.db-secret.env

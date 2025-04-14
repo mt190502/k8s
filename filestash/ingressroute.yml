@@ -13,7 +13,7 @@ spec:
       priority: 10
       services:
         - kind: Service
-          name: filestash-web
+          name: filestash-main
           namespace: filestash-k8s
           passHostHeader: true
           port: 8334

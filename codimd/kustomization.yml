@@ -7,7 +7,7 @@ generatorOptions:
   disableNameSuffixHash: true
 
 secretGenerator:
-  - name: codimd-postgres
+  - name: codimd-postgresql
     namespace: codimd-k8s
     envs:
       - ./.db-secret.env

@@ -13,7 +13,7 @@ spec:
       priority: 10
       services:
         - kind: Service
-          name: paperless-ngx-web
+          name: paperless-ngx-main
           namespace: paperless-ngx-k8s
           passHostHeader: true
           port: 8000
