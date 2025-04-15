@@ -15,10 +15,6 @@ spec:
       parameters:
       - name: global.main.options.codimd_domain
         value: md.mtaha.dev
-      - name: global.postgresql.cnpg.enabled
-        value: "true"
-      - name: global.postgresql.cnpg.replicas
-        value: "1"
       - name: global.postgresql.secret.autoCreate
         value: kustomize
     repoURL: https://helm.mtaha.dev

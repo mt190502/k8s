@@ -17,10 +17,6 @@ spec:
         value: rss.mtaha.dev
       - name: global.postgresql.secret.autoCreate
         value: kustomize
-      - name: global.postgresql.cnpg.enabled
-        value: "true"
-      - name: global.postgresql.cnpg.replicas
-        value: "1"
       values: |-
         nodeSelector:
           kubernetes.io/hostname: m1.srv.mtaha.dev
