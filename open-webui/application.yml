@@ -1,0 +1,53 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: copilot-api
+  namespace: argocd
+spec:
+  destination:
+    namespace: open-webui-k8s
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: copilot-api
+    repoURL: https://helm.mtaha.dev
+    targetRevision: 1.*
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: open-webui
+  namespace: argocd
+spec:
+  destination:
+    namespace: open-webui-k8s
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: open-webui
+    helm:
+      parameters:
+      - name: ollama.enabled
+        value: "false"
+      - name: persistence.size
+        value: 2Gi
+      - name: websocket.redis.enabled
+        value: "false"
+      - name: pipelines.enabled
+        value: "false"
+      - name: postgresql.enabled
+        value: "true"
+      values: |-
+        nodeSelector:
+          kubernetes.io/hostname: m1.srv.mtaha.dev
+    repoURL: https://helm.openwebui.com/
+    targetRevision: 6.*
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
