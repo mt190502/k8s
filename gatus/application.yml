@@ -27,7 +27,7 @@ spec:
             #  conditions:
             #    - '[STATUS] == any(200, 201, 202)'
             #- name: 'AdGuard Home'
-            #  url: 'http://adguard-home-web.adguard-home-k8s.svc.cluster.local'
+            #  url: 'http://adguard-home-main.adguard-home-k8s.svc.cluster.local'
             #  group: 'Internal'
             #  interval: 300s
             #  conditions:
@@ -51,7 +51,7 @@ spec:
               conditions:
               - '[STATUS] == any(200, 201, 202, 401)'
             - name: 'CodiMD'
-              url: 'http://codimd-web.codimd-k8s.svc.cluster.local:3000'
+              url: 'http://codimd-main.codimd-k8s.svc.cluster.local:3000'
               group: 'Internal'
               interval: 300s
               conditions:
@@ -63,7 +63,7 @@ spec:
               conditions:
               - '[STATUS] == any(200, 201, 202)'
             - name: 'Commafeed'
-              url: 'http://commafeed-web.commafeed-k8s.svc.cluster.local'
+              url: 'http://commafeed-main.commafeed-k8s.svc.cluster.local'
               group: 'Internal'
               interval: 300s
               conditions:
@@ -75,7 +75,7 @@ spec:
               conditions:
               - '[STATUS] == any(200, 201, 202)'
             - name: 'Filestash'
-              url: 'http://filestash-web.filestash-k8s.svc.cluster.local:8334'
+              url: 'http://filestash-main.filestash-k8s.svc.cluster.local:8334'
               group: 'Internal'
               interval: 300s
               conditions:
@@ -111,7 +111,7 @@ spec:
               conditions:
               - '[STATUS] == any(200, 201, 202)'
             - name: 'Memos'
-              url: 'http://memos-web.memos-k8s.svc.cluster.local:5230'
+              url: 'http://memos-main.memos-k8s.svc.cluster.local:5230'
               group: 'Internal'
               interval: 300s
               conditions:
@@ -150,7 +150,7 @@ spec:
               conditions:
               - '[STATUS] == any(200, 201, 202)'
             - name: 'Paperless-NGX'
-              url: 'http://paperless-ngx-web.paperless-ngx-k8s.svc.cluster.local:8000'
+              url: 'http://paperless-ngx-main.paperless-ngx-k8s.svc.cluster.local:8000'
               group: 'Internal'
               interval: 300s
               conditions:
@@ -174,7 +174,7 @@ spec:
               conditions:
               - '[STATUS] == any(200, 201, 202)'
             - name: 'Umami'
-              url: 'http://umami-web.umami-k8s.svc.cluster.local:3000'
+              url: 'http://umami-main.umami-k8s.svc.cluster.local:3000'
               group: 'Internal'
               interval: 300s
               conditions:
@@ -186,7 +186,7 @@ spec:
             #  conditions:
             #  - '[STATUS] == any(200, 201, 202)'
             #- name: 'Vaultwarden'
-            #  url: 'http://vaultwarden-web.vaultwarden-k8s.svc.cluster.local:8080'
+            #  url: 'http://vaultwarden-main.vaultwarden-k8s.svc.cluster.local:8080'
             #  group: 'Internal'
             #  interval: 300s
             #  conditions:
@@ -198,7 +198,7 @@ spec:
               conditions:
               - '[STATUS] == any(200, 201, 202)'
             - name: 'Vikunja'
-              url: 'http://vikunja-web.vikunja-k8s.svc.cluster.local:3456'
+              url: 'http://vikunja-main.vikunja-k8s.svc.cluster.local:3456'
               group: 'Internal'
               interval: 300s
               conditions:
