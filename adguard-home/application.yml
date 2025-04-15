@@ -19,6 +19,9 @@ spec:
         value: dns.mtaha.dev
       - name: global.main.podCIDR
         value: 172.16.0.0/16
+      values: |
+        nodeSelector:
+          kubernetes.io/hostname: m1.srv.mtaha.dev
     repoURL: https://helm.mtaha.dev
     targetRevision: '*'
   syncPolicy:
