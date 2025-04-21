@@ -13,14 +13,6 @@ spec:
     chart: vaultwarden
     helm:
       parameters:
-      - name: global.postgresql.secret.name
-        value: vaultwarden-postgresql
-      - name: global.postgresql.secret.databaseKey
-        value: database
-      - name: global.postgresql.secret.usernameKey
-        value: username
-      - name: global.postgresql.secret.passwordKey
-        value: password
       - name: global.postgresql.secret.autoCreate
         value: kustomize
     repoURL: https://helm.mtaha.dev

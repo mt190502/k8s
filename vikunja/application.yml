@@ -28,5 +28,6 @@ spec:
     repoURL: https://helm.mtaha.dev
     targetRevision: '*'
   syncPolicy:
+    automated: {}
     syncOptions:
     - CreateNamespace=true

@@ -11,6 +11,10 @@ spec:
   project: default
   source:
     chart: copilot-api
+    helm:
+      values: |-
+        nodeSelector:
+          kubernetes.io/hostname: m1.srv.mtaha.dev
     repoURL: https://helm.mtaha.dev
     targetRevision: 1.*
   syncPolicy:
@@ -45,6 +49,14 @@ spec:
       values: |-
         nodeSelector:
           kubernetes.io/hostname: m1.srv.mtaha.dev
+        postgresql:
+          primary:
+            nodeSelector:
+              kubernetes.io/hostname: m1.srv.mtaha.dev
+        resources:
+          limits:
+            cpu: 200m
+            memory: 2048Mi
     repoURL: https://helm.openwebui.com/
     targetRevision: 6.*
   syncPolicy:

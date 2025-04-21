@@ -23,10 +23,6 @@ spec:
         value: 250m
       - name: resources.requests.main.storage
         value: 2Gi
-      - name: global.postgresql.cnpg.enabled
-        value: "true"
-      - name: global.postgresql.cnpg.replicas
-        value: "1"
       values: |-
         global:
           main:

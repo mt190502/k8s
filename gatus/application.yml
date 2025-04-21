@@ -143,6 +143,18 @@ spec:
             #    ignore-redirect: true
             #  conditions:
             #  - '[STATUS] == any(200, 201, 202, 400)'
+            - name: 'Open WebUI'
+              url: 'https://ai.mtaha.dev'
+              group: 'External'
+              interval: 300s
+              conditions:
+              - '[STATUS] == any(200, 201, 202)'
+            - name: 'Open WebUI'
+              url: 'http://open-webui.open-webui-k8s.svc.cluster.local'
+              group: 'Internal'
+              interval: 300s
+              conditions:
+              - '[STATUS] == any(200, 201, 202)'
             - name: 'Paperless-NGX'
               url: 'https://paperless.mtaha.dev'
               group: 'External'
