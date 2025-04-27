@@ -23,6 +23,9 @@ spec:
         value: "true"
       - name: secret.settings.autoCreate
         value: kustomize
+      values: |-
+        nodeSelector:
+          kubernetes.io/hostname: w2.srv.mtaha.dev
     repoURL: https://helm.mtaha.dev
     targetRevision: '*'
   syncPolicy:

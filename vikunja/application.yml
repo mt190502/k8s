@@ -25,6 +25,8 @@ spec:
             environments:
               - name: VIKUNJA_SERVICE_ENABLEREGISTRATION
                 value: false
+        nodeSelector:
+          kubernetes.io/hostname: w1.srv.mtaha.dev
     repoURL: https://helm.mtaha.dev
     targetRevision: '*'
   syncPolicy:

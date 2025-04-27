@@ -47,6 +47,8 @@ spec:
                 value: disable
               - name: PAPERLESS_WEBSERVER_WORKERS
                 value: 1
+        nodeSelector:
+          kubernetes.io/hostname: w1.srv.mtaha.dev
     repoURL: https://helm.mtaha.dev
     targetRevision: '*'
   syncPolicy:

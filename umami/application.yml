@@ -17,6 +17,9 @@ spec:
         value: kustomize
       - name: global.postgresql.secret.autoCreate
         value: kustomize
+      values: |-
+        nodeSelector:
+          kubernetes.io/hostname: w1.srv.mtaha.dev
     repoURL: https://helm.mtaha.dev
     targetRevision: '*'
   syncPolicy:

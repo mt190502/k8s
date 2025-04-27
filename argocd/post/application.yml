@@ -12,12 +12,14 @@ spec:
   source:
     chart: argo-cd
     helm:
-      values: |
+      values: |-
         configs:
           params:
             server.insecure: true
         global:
           domain: argo.mtaha.dev
+        nodeSelector:
+          kubernetes.io/hostname: w2.srv.mtaha.dev
     repoURL: https://argoproj.github.io/argo-helm
     targetRevision: 7.*
   syncPolicy:
