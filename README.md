@@ -47,6 +47,7 @@ graph TD;
 ### Components
 
 - AdGuard Home - For DNS and ad blocking
+- Anki Server - For self-hosted Anki Flashcards
 - ArgoCD - For GitOps, manages all the deployments (except itself and the CNI)
 - Authentik - For OAuth2 and OIDC
 - cert-manager - For managing certificates

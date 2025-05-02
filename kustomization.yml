@@ -10,6 +10,7 @@ resources:
   # - cnpg/
   # - adguard-home/
   # - authentik/
+  - anki-server/
   - codimd/
   - commafeed/
   - custom/

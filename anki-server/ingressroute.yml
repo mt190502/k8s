@@ -1,0 +1,24 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: anki-server-main
+  namespace: anki-server-k8s
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`ankisync.mtaha.dev`)
+      priority: 10
+      services:
+        - kind: Service
+          name: anki-server-main
+          namespace: anki-server-k8s
+          passHostHeader: true
+          port: 8080
+          scheme: http
+  tls:
+    domains:
+      - main: ankisync.mtaha.dev
+    secretName: wildcard-mtaha.dev-tls
