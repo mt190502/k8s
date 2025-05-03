@@ -7,7 +7,7 @@ generatorOptions:
   disableNameSuffixHash: true
 
 secretGenerator:
-  - name: anki-server-secret
+  - name: username1-secret
     namespace: anki-server-k8s
     envs:
-      - ./.app-secret.env
+      - ./.user1-secret.env
