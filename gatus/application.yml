@@ -20,24 +20,24 @@ spec:
             header: 'mtaha.dev - Health Status'
             title: 'Health Status | mtaha.dev'
           endpoints:
-            #- name: 'AdGuard Home'
-            #  url: 'https://dns.mtaha.dev'
-            #  group: 'External'
-            #  interval: 300s
-            #  conditions:
-            #    - '[STATUS] == any(200, 201, 202)'
-            #- name: 'AdGuard Home'
-            #  url: 'http://adguard-home-main.adguard-home-k8s.svc.cluster.local'
-            #  group: 'Internal'
-            #  interval: 300s
-            #  conditions:
-            #    - '[STATUS] == any(200, 201, 202)'
+            - name: 'AdGuard Home'
+              url: 'https://dns.mtaha.dev'
+              group: 'External'
+              interval: 300s
+              conditions:
+              - '[STATUS] == any(200, 201, 202)'
+            - name: 'AdGuard Home'
+              url: 'tcp://adguard-home-main.adguard-home-k8s.svc.cluster.local:53'
+              group: 'Internal'
+              interval: 300s
+              conditions:
+              - '[CONNECTED] == true'
             - name: 'ArgoCD'
               url: 'https://argo.mtaha.dev'
               group: 'External'
               interval: 300s
               conditions:
-               - '[STATUS] == any(200, 201, 202)'
+              - '[STATUS] == any(200, 201, 202)'
             - name: 'ArgoCD'
               url: 'http://argocd-server.argocd.svc.cluster.local'
               group: 'Internal'
