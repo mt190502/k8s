@@ -1,3 +1,9 @@
 resources:
   - namespace.yml
   - application.yml
+
+secretGenerator:
+  - name: longhorn-minio-credentials
+    namespace: longhorn-system
+    envs:
+      - .minio-credentials.env
