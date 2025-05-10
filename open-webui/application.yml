@@ -36,29 +36,17 @@ spec:
     chart: open-webui
     helm:
       parameters:
-      - name: ollama.enabled
-        value: "false"
-      - name: persistence.size
-        value: 2Gi
-      - name: websocket.redis.enabled
-        value: "false"
-      - name: pipelines.enabled
-        value: "false"
-      - name: postgresql.enabled
-        value: "true"
+      - name: global.postgresql.secret.autoCreate
+        value: kustomize
       values: |-
         nodeSelector:
           kubernetes.io/hostname: m1.srv.mtaha.dev
-        postgresql:
-          primary:
-            nodeSelector:
-              kubernetes.io/hostname: m1.srv.mtaha.dev
         resources:
           limits:
-            cpu: 200m
+            cpu: 400m
             memory: 2048Mi
-    repoURL: https://helm.openwebui.com/
-    targetRevision: 6.*
+    repoURL: https://helm.mtaha.dev
+    targetRevision: '*'
   syncPolicy:
     automated: {}
     syncOptions:

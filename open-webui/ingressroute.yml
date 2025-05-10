@@ -13,10 +13,10 @@ spec:
       priority: 10
       services:
         - kind: Service
-          name: open-webui
+          name: open-webui-main
           namespace: open-webui-k8s
           passHostHeader: true
-          port: 80
+          port: 8080
           scheme: http
   tls:
     domains:

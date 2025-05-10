@@ -2,3 +2,12 @@ resources:
   - namespace.yml
   - application.yml
   - ingressroute.yml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+secretGenerator:
+  - name: open-webui-postgresql
+    namespace: open-webui-k8s
+    envs:
+      - ./.db-secret.env
