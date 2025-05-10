@@ -13,7 +13,7 @@ spec:
     chart: redmine
     helm:
       parameters:
-      - name: global.postgresql.secret.autoCreate
+      - name: postgresql.secret.autoCreate
         value: kustomize
     repoURL: https://helm.mtaha.dev
     targetRevision: '*'

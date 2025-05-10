@@ -13,11 +13,11 @@ spec:
     chart: adguard-home
     helm:
       parameters:
-      - name: global.main.tls.secretName
+      - name: main.tls.secretName
         value: wildcard-mtaha.dev-tls
-      - name: global.main.tls.serverName
+      - name: main.tls.serverName
         value: dns.mtaha.dev
-      - name: global.main.podCIDR
+      - name: main.podCIDR
         value: 172.16.0.0/16
       values: |
         nodeSelector:

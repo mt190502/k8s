@@ -13,7 +13,7 @@ spec:
     chart: memos
     helm:
       parameters:
-      - name: global.postgresql.secret.autoCreate
+      - name: postgresql.secret.autoCreate
         value: kustomize
       values: |-
         nodeSelector:

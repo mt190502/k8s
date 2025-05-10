@@ -13,40 +13,39 @@ spec:
     chart: paperless-ngx
     helm:
       parameters:
-      - name: global.main.options.paperless_url
+      - name: main.options.paperless_url
         value: https://paperless.mtaha.dev
-      - name: global.main.appSecret.autoCreate
+      - name: main.appSecret.autoCreate
         value: kustomize
-      - name: global.postgresql.secret.autoCreate
+      - name: postgresql.secret.autoCreate
         value: kustomize
       - name: resources.limits.main.cpu
         value: 250m
       - name: resources.requests.main.storage
         value: 2Gi
       values: |-
-        global:
-          main:
-            environments:
-              - name: PAPERLESS_OCR_LANGUAGE
-                value: eng
-              - name: PAPERLESS_OCR_LANGUAGES
-                value: tur eng
-              - name: PAPERLESS_ENABLE_NLTK
-                value: false
-              - name: PAPERLESS_OCR_CLEAN
-                value: none
-              - name: PAPERLESS_OCR_MODE
-                value: skip
-              - name: PAPERLESS_OCR_SKIP_ARCHIVE_FILE
-                value: always
-              - name: PAPERLESS_TASK_WORKERS
-                value: 1
-              - name: PAPERLESS_THREADS_PER_WORKER
-                value: 1
-              - name: PAPERLESS_TRAIN_TASK_CRON
-                value: disable
-              - name: PAPERLESS_WEBSERVER_WORKERS
-                value: 1
+        main:
+          environments:
+            - name: PAPERLESS_OCR_LANGUAGE
+              value: eng
+            - name: PAPERLESS_OCR_LANGUAGES
+              value: tur eng
+            - name: PAPERLESS_ENABLE_NLTK
+              value: false
+            - name: PAPERLESS_OCR_CLEAN
+              value: none
+            - name: PAPERLESS_OCR_MODE
+              value: skip
+            - name: PAPERLESS_OCR_SKIP_ARCHIVE_FILE
+              value: always
+            - name: PAPERLESS_TASK_WORKERS
+              value: 1
+            - name: PAPERLESS_THREADS_PER_WORKER
+              value: 1
+            - name: PAPERLESS_TRAIN_TASK_CRON
+              value: disable
+            - name: PAPERLESS_WEBSERVER_WORKERS
+              value: 1
         nodeSelector:
           kubernetes.io/hostname: w1.srv.mtaha.dev
     repoURL: https://helm.mtaha.dev

@@ -13,15 +13,14 @@ spec:
     chart: anki-server
     helm:
       values: |-
-        global:
-          main:
-            accounts:
-              - key: SYNC_USER1
-                secret:
-                  enabled: true
-                  autoCreate: kustomize
-                  name: username1-secret
-                  key: cred
+        main:
+          accounts:
+            - key: SYNC_USER1
+              secret:
+                enabled: true
+                autoCreate: kustomize
+                name: username1-secret
+                key: cred
     repoURL: https://helm.mtaha.dev
     targetRevision: '*'
   syncPolicy:

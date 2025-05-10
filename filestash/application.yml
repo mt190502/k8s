@@ -13,7 +13,7 @@ spec:
     chart: filestash
     helm:
       parameters:
-      - name: global.main.options.application_url
+      - name: main.options.application_url
         value: files.mtaha.dev
       values: |-
         nodeSelector:

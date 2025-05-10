@@ -13,9 +13,9 @@ spec:
     chart: codimd
     helm:
       parameters:
-      - name: global.main.options.codimd_domain
+      - name: main.options.codimd_domain
         value: md.mtaha.dev
-      - name: global.postgresql.secret.autoCreate
+      - name: postgresql.secret.autoCreate
         value: kustomize
       values: |-
         nodeSelector:

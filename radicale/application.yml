@@ -13,11 +13,11 @@ spec:
     chart: radicale
     helm:
       parameters:
-      - name: global.main.tls.secretName
+      - name: main.tls.secretName
         value: wildcard-mtaha.dev-tls
-      - name: global.main.tls.serverName
+      - name: main.tls.serverName
         value: dav.mtaha.dev
-      - name: global.main.tls.enabled
+      - name: main.tls.enabled
         value: "true"
       - name: secret.settings.enabled
         value: "true"

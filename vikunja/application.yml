@@ -13,18 +13,17 @@ spec:
     chart: vikunja
     helm:
       parameters:
-      - name: global.main.options.publicurl
+      - name: main.options.publicurl
         value: https://plan.mtaha.dev
-      - name: global.main.appSecret.autoCreate
+      - name: main.appSecret.autoCreate
         value: kustomize
-      - name: global.postgresql.secret.autoCreate
+      - name: postgresql.secret.autoCreate
         value: kustomize
       values: |-
-        global:
-          main:
-            environments:
-              - name: VIKUNJA_SERVICE_ENABLEREGISTRATION
-                value: false
+        main:
+          environments:
+            - name: VIKUNJA_SERVICE_ENABLEREGISTRATION
+              value: false
         nodeSelector:
           kubernetes.io/hostname: w1.srv.mtaha.dev
     repoURL: https://helm.mtaha.dev

@@ -13,9 +13,9 @@ spec:
     chart: commafeed
     helm:
       parameters:
-      - name: global.main.options.publicUrl
+      - name: main.options.publicUrl
         value: rss.mtaha.dev
-      - name: global.postgresql.secret.autoCreate
+      - name: postgresql.secret.autoCreate
         value: kustomize
       values: |-
         nodeSelector:

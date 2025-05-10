@@ -13,9 +13,9 @@ spec:
     chart: umami
     helm:
       parameters:
-      - name: global.main.appSecret.autoCreate
+      - name: main.appSecret.autoCreate
         value: kustomize
-      - name: global.postgresql.secret.autoCreate
+      - name: postgresql.secret.autoCreate
         value: kustomize
       values: |-
         nodeSelector:
