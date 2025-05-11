@@ -150,7 +150,7 @@ spec:
               conditions:
               - '[STATUS] == any(200, 201, 202)'
             - name: 'Open WebUI'
-              url: 'http://open-webui.open-webui-k8s.svc.cluster.local'
+              url: 'http://open-webui-main.open-webui-k8s.svc.cluster.local:8080'
               group: 'Internal'
               interval: 300s
               conditions:
