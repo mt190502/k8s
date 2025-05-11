@@ -16,7 +16,7 @@ spec:
         nodeSelector:
           kubernetes.io/hostname: m1.srv.mtaha.dev
     repoURL: https://helm.mtaha.dev
-    targetRevision: 1.*
+    targetRevision: '*'
   syncPolicy:
     automated: {}
     syncOptions:

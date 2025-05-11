@@ -10,7 +10,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     repoURL: 'https://traefik.github.io/charts'
-    targetRevision: 33.*
+    targetRevision: '*'
     chart: traefik
     helm:
       parameters:

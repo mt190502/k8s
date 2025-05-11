@@ -21,7 +21,7 @@ spec:
         nodeSelector:
           kubernetes.io/hostname: w2.srv.mtaha.dev
     repoURL: https://argoproj.github.io/argo-helm
-    targetRevision: 7.*
+    targetRevision: 8.*
   syncPolicy:
     automated: {}
     syncOptions:

@@ -24,7 +24,7 @@ spec:
       - name: grafana.admin.existingSecret
         value: kube-prometheus-stack-grafana
     repoURL: https://prometheus-community.github.io/helm-charts
-    targetRevision: 70.*
+    targetRevision: '*'
   syncPolicy:
     automated: {}
     syncOptions:
