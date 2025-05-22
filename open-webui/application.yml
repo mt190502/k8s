@@ -39,6 +39,20 @@ spec:
       - name: postgresql.secret.autoCreate
         value: kustomize
       values: |-
+        main:
+          environments:
+            - name: WEBUI_URL
+              value: https://ai.mtaha.dev
+            - name: WEBUI_NAME
+              value: "M.Taha's AI Assistant"
+            - name: ENABLE_SIGNUP
+              value: "False"
+            - name: DEFAULT_LOCALE
+              value: "en"
+            - name: DEFAULT_MODELS
+              value: "None"
+            - name: ENABLE_EVALUATION_ARENA_MODELS
+              value: "False"
         nodeSelector:
           kubernetes.io/hostname: m1.srv.mtaha.dev
         resources:
