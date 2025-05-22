@@ -16,6 +16,8 @@ spec:
       parameters:
         - name: deployment.replicas
           value: "1"
+        - name: deployment.revisionHistoryLimit
+          value: "0"
         - name: ports.websecure.hostPort
           value: "443"
         - name: ingressClass.enabled
