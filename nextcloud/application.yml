@@ -36,9 +36,9 @@ spec:
           value: 'true'
         - name: nextcloud.existingSecret.secretName
           value: nextcloud-app-secret
-        - name: nextcloud.existingSecret.passwordKey
-          value: nextcloud_admin_username
         - name: nextcloud.existingSecret.usernameKey
+          value: nextcloud_admin_username
+        - name: nextcloud.existingSecret.passwordKey
           value: nextcloud_admin_password
         - name: nextcloud.host
           value: cloud.mtaha.dev
