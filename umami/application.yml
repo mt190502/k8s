@@ -19,7 +19,7 @@ spec:
         value: kustomize
       values: |-
         nodeSelector:
-          kubernetes.io/hostname: w1.srv.mtaha.dev
+          kubernetes.io/hostname: m1.srv.mtaha.dev
     repoURL: https://helm.mtaha.dev
     targetRevision: '*'
   syncPolicy:
