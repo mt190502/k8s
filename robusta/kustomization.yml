@@ -1,0 +1,50 @@
+resources:
+  - namespace.yml
+  - application.yml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+configMapGenerator:
+  - name: robusta-config
+    namespace: robusta-k8s
+    envs:
+      - .secret.env
+
+replacements:
+  - source:
+      kind: ConfigMap
+      name: robusta-config
+      namespace: robusta-k8s
+      fieldPath: data.signing_key
+    targets:
+      - select:
+          kind: Application
+          name: robusta
+          namespace: argocd
+        fieldPaths:
+          - spec.source.helm.parameters.[name=globalConfig.signing_key].value
+  - source:
+      kind: ConfigMap
+      name: robusta-config
+      namespace: robusta-k8s
+      fieldPath: data.account_id
+    targets:
+      - select:
+          kind: Application
+          name: robusta
+          namespace: argocd
+        fieldPaths:
+          - spec.source.helm.parameters.[name=globalConfig.account_id].value
+  - source:
+      kind: ConfigMap
+      name: robusta-config
+      namespace: robusta-k8s
+      fieldPath: data.webhook_url
+    targets:
+      - select:
+          kind: Application
+          name: robusta
+          namespace: argocd
+        fieldPaths:
+          - spec.source.helm.valuesObject.sinksConfig.0.discord_sink.url

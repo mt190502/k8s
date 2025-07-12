@@ -1,0 +1,60 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: robusta
+  namespace: argocd
+spec:
+  destination:
+    namespace: robusta-k8s
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: robusta
+    helm:
+      parameters:
+      - name: clusterName
+        value: srv.mtaha.dev
+      - name: globalConfig.signing_key
+        value: signing_key
+      - name: globalConfig.account_id
+        value: account_id
+      - name: enablePrometheusStack
+        value: "true"
+      - name: enablePlatformPlaybooks
+        value: "true"
+      - name: runner.sendAdditionalTelemetry
+        value: "false"
+      - name: enableHolmesGPT
+        value: "false"
+      - name: enabledManagedConfiguration
+        value: "true"
+      - name: isSmallCluster
+        value: "true"
+      valuesObject:
+        kube-prometheus-stack:
+          prometheus:
+            prometheusSpec:
+              storageSpec:
+                emptyDir: 
+                  medium: Memory
+          alertmanager:
+            alertmanagerSpec:
+              storage:
+                volumeClaimTemplate:
+                  spec:
+                    resources:
+                      requests:
+                        storage: 2Gi
+        sinksConfig:
+          - discord_sink:
+              name: discord_sink
+              prefer_redirect_to_platform: false
+              url: https://discord.com/api/webhooks/testing
+    repoURL: https://robusta-charts.storage.googleapis.com
+    targetRevision: '*'
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
