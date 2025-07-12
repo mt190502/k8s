@@ -10,6 +10,8 @@ spec:
     annotations:
       reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
       reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "adguard-home-k8s,radicale-k8s,maddy-k8s"
+      reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "adguard-home-k8s,radicale-k8s,maddy-k8s"
   dnsNames:
     - 'mtaha.dev'
     - '*.mtaha.dev'
