@@ -1,0 +1,18 @@
+resources:
+  - application.yml
+  - ingressroute.yml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+secretGenerator:
+  - name: oauth2-proxy-secret
+    namespace: traefik
+    envs:
+      - ./.app-secret.env
+
+configMapGenerator:
+  - name: oauth2-allowed-emails
+    namespace: traefik
+    files:
+      - ./allowed-emails.txt

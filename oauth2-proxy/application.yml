@@ -1,0 +1,57 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: oauth2-proxy
+  namespace: argocd
+spec:
+  destination:
+    namespace: traefik
+    server: https://kubernetes.default.svc
+  source:
+    chart: oauth2-proxy
+    helm:
+      parameters:
+      - name: config.existingSecret
+        value: oauth2-proxy-secret
+      - name: extraArgs.authenticated-emails-file
+        value: /etc/oauth2_proxy/allowed-emails.txt
+      - name: extraArgs.cookie-domain
+        value: ".mtaha.dev"
+      - name: extraArgs.cookie-secure
+        value: "true"
+      - name: extraArgs.provider
+        value: google
+      - name: extraArgs.redirect-url
+        value: https://auth.mtaha.dev/oauth2/callback
+      - name: extraArgs.reverse-proxy
+        value: "true"
+      - name: extraArgs.silence-ping-logging
+        value: "true"
+      - name: extraArgs.skip-provider-button
+        value: "true"
+      - name: extraArgs.upstream
+        value: static://200
+      - name: extraArgs.whitelist-domain
+        value: ".mtaha.dev"
+      values: |
+        config:
+          configFile: |-
+             
+        extraVolumes:
+          - name: allowed-emails
+            configMap:
+              name: oauth2-allowed-emails
+        extraVolumeMounts:
+          - name: allowed-emails
+            mountPath: /etc/oauth2_proxy/allowed-emails.txt
+            subPath: allowed-emails.txt
+            readOnly: true
+    repoURL: https://oauth2-proxy.github.io/manifests
+    targetRevision: '*'
+  sources: []
+  project: default
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true

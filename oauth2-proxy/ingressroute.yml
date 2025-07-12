@@ -1,0 +1,48 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: oauth-errors
+  namespace: traefik
+spec:
+  errors:
+    status:
+      - "401-401"
+    service:
+      name: oauth2-proxy
+      namespace: traefik
+      port: 80
+    query: "/oauth2/start?rd={url}"
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: oauth2-proxy-auth
+  namespace: traefik
+spec:
+  forwardAuth:
+    address: "http://oauth2-proxy.traefik.svc.cluster.local/oauth2/auth"
+    trustForwardHeader: true
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: oauth2-proxy
+  namespace: traefik
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`auth.mtaha.dev`) && PathPrefix(`/oauth2`)
+      priority: 10
+      services:
+        - kind: Service
+          name: oauth2-proxy
+          namespace: traefik
+          port: 80
+          scheme: http
+  tls:
+    domains:
+      - main: auth.mtaha.dev
+    secretName: wildcard-mtaha.dev-tls
