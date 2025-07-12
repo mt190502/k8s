@@ -1,14 +1,5 @@
 ---
 apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: basic-auth
-  namespace: codimd-k8s
-spec:
-  basicAuth:
-    secret: basic-auth-secret
----
-apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: codimd
@@ -21,7 +12,10 @@ spec:
       match: Host(`md.mtaha.dev`)
       priority: 10
       middlewares:
-        - name: basic-auth
+        - name: oauth-errors
+          namespace: traefik
+        - name: oauth2-proxy-auth
+          namespace: traefik
       services:
         - kind: Service
           name: codimd-main
