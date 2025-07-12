@@ -8,7 +8,7 @@ resources:
   - longhorn/
   - kubernetes-reflector/
   # - cnpg/
-  # - adguard-home/
+  - adguard-home/
   # - authentik/
   - anki-server/
   - codimd/
@@ -19,12 +19,15 @@ resources:
   - gatus/
   # - jellyfin/
   - memos/
-  - metrics/
+  # - metrics/
   # - nextcloud/
+  - oauth2-proxy/
+  # - open-webui/
   - paperless-ngx/
   # - pmm/
   - radicale/
-  - redmine/
+  # - redmine/
+  - robusta/
   - tailscale-operator/
   - umami/
   # - vaultwarden/
