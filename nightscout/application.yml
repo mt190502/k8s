@@ -1,0 +1,32 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nightscout
+  namespace: argocd
+spec:
+  destination:
+    namespace: nightscout-k8s
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: nightscout
+    helm:
+      parameters:
+      - name: main.appSecret.autoCreate
+        value: kustomize
+      - name: mongo.secret.autoCreate
+        value: kustomize
+      - name: main.options.timezone
+        value: Europe/Istanbul
+      - name: main.options.auth_default_roles
+        value: readable
+      values: |-
+        nodeSelector:
+          kubernetes.io/hostname: m1.srv.mtaha.dev
+    repoURL: https://helm.mtaha.dev
+    targetRevision: '*'
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true

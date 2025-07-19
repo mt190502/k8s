@@ -1,0 +1,24 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nightscout
+  namespace: nightscout-k8s
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`t1d.mtaha.dev`)
+      priority: 10
+      services:
+        - kind: Service
+          name: nightscout-main
+          namespace: nightscout-k8s
+          passHostHeader: true
+          port: 1337
+          scheme: http
+  tls:
+    domains:
+      - main: t1d.mtaha.dev
+    secretName: wildcard-mtaha.dev-tls

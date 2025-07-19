@@ -1,0 +1,17 @@
+resources:
+  - namespace.yml
+  - ingressroute.yml
+  - application.yml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+secretGenerator:
+  - name: nightscout-mongo
+    namespace: nightscout-k8s
+    envs:
+      - ./.db-secret.env
+  - name: nightscout-secret
+    namespace: nightscout-k8s
+    envs:
+      - ./.app-secret.env

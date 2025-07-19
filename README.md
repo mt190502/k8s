@@ -64,6 +64,7 @@ graph TD;
 - Memos - For note taking (advanced)
 - MetalLB - Load balancer, network policies
 - Nextcloud - For file sharing
+- Nightscout - For diabetes management
 - Paperless-NGX - For document management
 - PMM - For database monitoring
 - Radicale - For CalDAV and CardDAV server

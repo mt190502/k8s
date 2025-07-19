@@ -21,6 +21,7 @@ resources:
   - memos/
   # - metrics/
   # - nextcloud/
+  - nightscout/
   - oauth2-proxy/
   # - open-webui/
   - paperless-ngx/
