@@ -21,9 +21,29 @@ spec:
         value: Europe/Istanbul
       - name: main.options.auth_default_roles
         value: readable
+      - name: main.options.optional_features
+        value: careportal iob cob cors rawbg
       values: |-
         nodeSelector:
           kubernetes.io/hostname: m1.srv.mtaha.dev
+        main:
+          environments:
+            - name: BG_LOW
+              value: 60
+            - name: BG_HIGH
+              value: 200
+            - name: BG_TARGET_TOP
+              value: 190
+            - name: BG_TARGET_BOTTOM
+              value: 70
+            - name: CUSTOM_TITLE
+              value: "Taha's CGM"
+            - name: THEME
+              value: "colorblindfriendly"
+            - name: TIME_FORMAT
+              value: "24"
+            - name: SHOW_PLUGINS
+              value: "careportal iob cob cors dbsize"
     repoURL: https://helm.mtaha.dev
     targetRevision: '*'
   syncPolicy:
