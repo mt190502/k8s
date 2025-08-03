@@ -1,7 +1,7 @@
 resources:
   - argocd/pre/
   - cert-manager/pre/
-  - metallb/
+  # - metallb/
   - traefik/
   - argocd/post/
   - cert-manager/post/

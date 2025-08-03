@@ -35,9 +35,6 @@ graph TD;
     Tailscale-->w1
     Tailscale-->m1
     Tailscale-->w2
-    MetalLB-->w1
-    MetalLB-->m1
-    MetalLB-->w2
     w1
     m1<-->Ingress
     w2

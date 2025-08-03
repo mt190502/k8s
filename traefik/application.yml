@@ -24,6 +24,8 @@ spec:
           value: "true"
         - name: ingressClass.isDefaultClass
           value: "true"
+        - name: service.enabled
+          value: "false"
         - name: tlsStore.default.defaultCertificate.secretName
           value: wildcard-mtaha.dev-tls
       values: |
