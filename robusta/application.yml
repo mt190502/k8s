@@ -33,11 +33,6 @@ spec:
         value: "true"
       valuesObject:
         kube-prometheus-stack:
-          prometheus:
-            prometheusSpec:
-              storageSpec:
-                emptyDir: 
-                  medium: Memory
           alertmanager:
             alertmanagerSpec:
               storage:
@@ -46,11 +41,16 @@ spec:
                     resources:
                       requests:
                         storage: 2Gi
+          prometheus:
+            prometheusSpec:
+              storageSpec:
+                emptyDir:
+                  sizeLimit: 4Gi
         sinksConfig:
-          - discord_sink:
-              name: discord_sink
-              prefer_redirect_to_platform: false
-              url: https://discord.com/api/webhooks/testing
+        - discord_sink:
+            name: discord_sink
+            prefer_redirect_to_platform: false
+            url: https://discord.com/api/webhooks/testing
     repoURL: https://robusta-charts.storage.googleapis.com
     targetRevision: '*'
   syncPolicy:
