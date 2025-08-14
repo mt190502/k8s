@@ -8,7 +8,7 @@
   - Hostname: m1.srv.mtaha.dev
   - CPU: Intel Xeon (Skylake, IBRS, no TSX) (4) @ 2.10 GHz (x86_64)
   - RAM: 8 GB
-  - OS: Fedora 41 Cloud Edition
+  - OS: Fedora 42 Cloud Edition
   - Location: Hetzner Cloud
   - Machine: CX32
 
@@ -16,7 +16,7 @@
   - Hostname: w1.srv.mtaha.dev
   - CPU: ARM Cortex-A76 (4) @ 2.40 GHz (aarch64)
   - RAM: 8 GB
-  - OS: Fedora 41 Cloud Edition
+  - OS: Fedora 42 Cloud Edition
   - Location: Homelab
   - Machine: Raspberry Pi 5 - 8 GB
 
@@ -24,7 +24,7 @@
   - Hostname: w2.srv.mtaha.dev
   - CPU: Intel(R) Celeron(R) N3450 (4) @ 2.20 GHz (x86_64)
   - RAM: 8 GB
-  - OS: Fedora 41 Cloud Edition
+  - OS: Fedora 42 Cloud Edition
   - Location: Homelab
   - Machine: Zimaboard 832
 
