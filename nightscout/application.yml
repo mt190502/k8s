@@ -43,7 +43,7 @@ spec:
             - name: TIME_FORMAT
               value: "24"
             - name: SHOW_PLUGINS
-              value: "careportal iob cob cors dbsize"
+              value: "careportal iob cob cors dbsize basal"
     repoURL: https://helm.mtaha.dev
     targetRevision: '*'
   syncPolicy:
