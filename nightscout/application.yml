@@ -28,6 +28,14 @@ spec:
           kubernetes.io/hostname: m1.srv.mtaha.dev
         main:
           environments:
+            - name: ALARM_URGENT_HIGH
+              value: off
+            - name: ALARM_HIGH
+              value: off
+            - name: ALARM_LOW
+              value: off
+            - name: ALARM_URGENT_LOW
+              value: off
             - name: BG_LOW
               value: 60
             - name: BG_HIGH
