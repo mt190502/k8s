@@ -14,7 +14,7 @@ spec:
     helm:
       parameters:
       - name: main.options.publicurl
-        value: https://plan.mtaha.dev
+        value: http://vikunja-main.vikunja-k8s.svc.cluster.local:3456
       - name: main.appSecret.autoCreate
         value: kustomize
       - name: postgresql.secret.autoCreate
