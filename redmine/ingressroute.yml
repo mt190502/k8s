@@ -1,5 +1,16 @@
 ---
 apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect-root-to-my-page
+  namespace: redmine-k8s
+spec:
+  redirectRegex:
+    regex: ^https?://red.mtaha.dev/$
+    replacement: https://red.mtaha.dev/my/page
+    permanent: true
+---
+apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: redmine
@@ -11,6 +22,8 @@ spec:
     - kind: Rule
       match: Host(`red.mtaha.dev`)
       priority: 10
+      middlewares:
+      - name: redirect-root-to-my-page
       services:
         - kind: Service
           name: redmine-main
