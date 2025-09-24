@@ -9,7 +9,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: "HeaderRegexp(`Referer`, `^https?:\\/\\/(?:[a-zA-Z0-9\\-\\.]+\\.)?mtaha\\.dev`) && (Method(`POST`) || Method(`OPTIONS`)) && Host(`umami.mtaha.dev`) && PathPrefix(`/api`)"
+      match: "Host(`umami.mtaha.dev`) && PathPrefix(`/api`) && HeaderRegexp(`Referer`, `^https?:\\/\\/(?:[a-zA-Z0-9\\-\\.]+\\.)?mtaha\\.dev`) && (Method(`POST`) || Method(`OPTIONS`))"
       priority: 10
       services:
         - kind: Service
@@ -19,7 +19,7 @@ spec:
           port: 3000
           scheme: http
     - kind: Rule
-      match: "Host(`umami.mtaha.dev`) && Method(`GET`) || (Method(`POST`) && (PathPrefix(`/websites`) || PathPrefix(`/dashboard`)))"
+      match: "Host(`umami.mtaha.dev`)"
       priority: 11
       services:
         - kind: Service
