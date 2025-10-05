@@ -12,7 +12,7 @@ spec:
   source:
     chart: gatus
     helm:
-      values: |
+      values: |-
         nodeSelector:
           kubernetes.io/hostname: m1.srv.mtaha.dev
         config:
@@ -44,18 +44,18 @@ spec:
               interval: 300s
               conditions:
               - '[STATUS] == any(200, 201, 202)'
-            - name: 'CodiMD'
-              url: 'https://md.mtaha.dev'
-              group: 'External'
-              interval: 300s
-              conditions:
-              - '[STATUS] == any(200, 201, 202, 401)'
-            - name: 'CodiMD'
-              url: 'http://codimd-main.codimd-k8s.svc.cluster.local:3000'
-              group: 'Internal'
-              interval: 300s
-              conditions:
-              - '[STATUS] == any(200, 201, 202)'
+            #- name: 'CodiMD'
+            #  url: 'https://md.mtaha.dev'
+            #  group: 'External'
+            #  interval: 300s
+            #  conditions:
+            #  - '[STATUS] == any(200, 201, 202, 401)'
+            #- name: 'CodiMD'
+            #  url: 'http://codimd-main.codimd-k8s.svc.cluster.local:3000'
+            #  group: 'Internal'
+            #  interval: 300s
+            #  conditions:
+            #  - '[STATUS] == any(200, 201, 202)'
             - name: 'Commafeed'
               url: 'https://rss.mtaha.dev'
               group: 'External'
@@ -80,18 +80,18 @@ spec:
               interval: 300s
               conditions:
               - '[STATUS] == any(200, 201, 202)'
-            - name: 'Grafana'
-              url: 'https://dash.mtaha.dev'
-              group: 'External'
-              interval: 300s
-              conditions:
-              - '[STATUS] == any(200, 201, 202)'
-            - name: 'Grafana'
-              url: 'http://kube-prometheus-stack-grafana.metrics-k8s.svc.cluster.local'
-              group: 'Internal'
-              interval: 300s
-              conditions:
-              - '[STATUS] == any(200, 201, 202)'
+            #- name: 'Grafana'
+            #  url: 'https://dash.mtaha.dev'
+            #  group: 'External'
+            #  interval: 300s
+            #  conditions:
+            #  - '[STATUS] == any(200, 201, 202)'
+            #- name: 'Grafana'
+            #  url: 'http://kube-prometheus-stack-grafana.metrics-k8s.svc.cluster.local'
+            #  group: 'Internal'
+            #  interval: 300s
+            #  conditions:
+            #  - '[STATUS] == any(200, 201, 202)'
             #- name: 'Jellyfin'
             #  url: 'https://music.mtaha.dev'
             #  group: 'External'
@@ -104,18 +104,18 @@ spec:
             #  interval: 300s
             #  conditions:
             #  - '[STATUS] == any(200, 201, 202)'
-            - name: 'Memos'
-              url: 'https://notes.mtaha.dev'
-              group: 'External'
-              interval: 300s
-              conditions:
-              - '[STATUS] == any(200, 201, 202)'
-            - name: 'Memos'
-              url: 'http://memos-main.memos-k8s.svc.cluster.local:5230'
-              group: 'Internal'
-              interval: 300s
-              conditions:
-              - '[STATUS] == any(200, 201, 202)'
+            #- name: 'Memos'
+            #  url: 'https://notes.mtaha.dev'
+            #  group: 'External'
+            #  interval: 300s
+            #  conditions:
+            #  - '[STATUS] == any(200, 201, 202)'
+            #- name: 'Memos'
+            #  url: 'http://memos-main.memos-k8s.svc.cluster.local:5230'
+            #  group: 'Internal'
+            #  interval: 300s
+            #  conditions:
+            #  - '[STATUS] == any(200, 201, 202)'
             - name: 'MinIO'
               url: 'https://s3.mtaha.dev'
               group: 'External'
@@ -143,18 +143,18 @@ spec:
             #    ignore-redirect: true
             #  conditions:
             #  - '[STATUS] == any(200, 201, 202, 400)'
-            - name: 'Open WebUI'
-              url: 'https://ai.mtaha.dev'
-              group: 'External'
-              interval: 300s
-              conditions:
-              - '[STATUS] == any(200, 201, 202)'
-            - name: 'Open WebUI'
-              url: 'http://open-webui-main.open-webui-k8s.svc.cluster.local:8080'
-              group: 'Internal'
-              interval: 300s
-              conditions:
-              - '[STATUS] == any(200, 201, 202)'
+            #- name: 'Open WebUI'
+            #  url: 'https://ai.mtaha.dev'
+            #  group: 'External'
+            #  interval: 300s
+            #  conditions:
+            #  - '[STATUS] == any(200, 201, 202)'
+            #- name: 'Open WebUI'
+            #  url: 'http://open-webui-main.open-webui-k8s.svc.cluster.local:8080'
+            #  group: 'Internal'
+            #  interval: 300s
+            #  conditions:
+            #  - '[STATUS] == any(200, 201, 202)'
             - name: 'Paperless-NGX'
               url: 'https://paperless.mtaha.dev'
               group: 'External'
@@ -203,20 +203,20 @@ spec:
             #  interval: 300s
             #  conditions:
             #  - '[STATUS] == any(200, 201, 202)'
-            - name: 'Vikunja'
-              url: 'https://plan.mtaha.dev'
-              group: 'External'
-              interval: 300s
-              conditions:
-              - '[STATUS] == any(200, 201, 202)'
-            - name: 'Vikunja'
-              url: 'http://vikunja-main.vikunja-k8s.svc.cluster.local:3456'
-              group: 'Internal'
-              interval: 300s
-              conditions:
-              - '[STATUS] == any(200, 201, 202)'
+            #- name: 'Vikunja'
+            #  url: 'https://plan.mtaha.dev'
+            #  group: 'External'
+            #  interval: 300s
+            #  conditions:
+            #  - '[STATUS] == any(200, 201, 202)'
+            #- name: 'Vikunja'
+            #  url: 'http://vikunja-main.vikunja-k8s.svc.cluster.local:3456'
+            #  group: 'Internal'
+            #  interval: 300s
+            #  conditions:
+            #  - '[STATUS] == any(200, 201, 202)'
     repoURL: https://twin.github.io/helm-charts
-    targetRevision: 1.*
+    targetRevision: '*'
   syncPolicy:
     automated: {}
     syncOptions:
